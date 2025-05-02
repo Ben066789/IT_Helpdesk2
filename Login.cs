@@ -1,8 +1,6 @@
 using MySql.Data.MySqlClient;
 using System;
-using System.Data;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace IT_Helpdesk
 {
@@ -12,20 +10,15 @@ namespace IT_Helpdesk
         {
             InitializeComponent();
         }
+
         private string serverConnect()
         {
             return "Server=127.0.0.1; Database=company_helpdesk; User ID=root; Password=;";
         }
 
-        //everything else in form
-        private void password_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void loginButton_Click(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM accounts WHERE username = @username AND password = @password";
+            string query = "SELECT userID, role FROM accounts WHERE username = @username AND password = @password";
 
             using (MySqlConnection connection = new MySqlConnection(serverConnect()))
             {
@@ -34,30 +27,31 @@ namespace IT_Helpdesk
                     connection.Open();
 
                     MySqlCommand cmd = new MySqlCommand(query, connection);
-                    cmd.Parameters.AddWithValue("@username", username.Text);
-                    cmd.Parameters.AddWithValue("@password", password.Text);
+                    cmd.Parameters.AddWithValue("@username", username.Text.Trim());
+                    cmd.Parameters.AddWithValue("@password", password.Text.Trim());
 
                     MySqlDataReader reader = cmd.ExecuteReader();
 
                     if (reader.Read())
                     {
+                        int userId = Convert.ToInt32(reader["userID"]);
                         string role = reader["role"].ToString();
 
                         this.Hide();
 
                         if (role == "admin")
                         {
-                            AdminDashboard adminForm = new AdminDashboard();
+                            AdminDashboard adminForm = new AdminDashboard(username.Text);
                             adminForm.Show();
                         }
                         else if (role == "user")
                         {
-                            UserDashboard userForm = new UserDashboard();
+                            UserDashboard userForm = new UserDashboard(userId);
                             userForm.Show();
                         }
                         else
                         {
-                            MessageBox.Show("User Not Found");
+                            MessageBox.Show("User role not recognized.");
                             this.Show();
                         }
                     }

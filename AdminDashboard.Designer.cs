@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            lblWelcome = new Label();
             SuspendLayout();
             // 
-            // label1
+            // lblWelcome
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(374, 206);
-            label1.Name = "label1";
-            label1.Size = new Size(41, 15);
-            label1.TabIndex = 0;
-            label1.Text = "admin";
+            lblWelcome.AutoSize = true;
+            lblWelcome.Location = new Point(42, 32);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(41, 15);
+            lblWelcome.TabIndex = 0;
+            lblWelcome.Text = "admin";
             // 
             // AdminDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(label1);
+            Controls.Add(lblWelcome);
             Name = "AdminDashboard";
             Text = "Form2";
             Load += AdminDashboard_Load;
@@ -57,6 +57,6 @@
 
         #endregion
 
-        private Label label1;
+        private Label lblWelcome;
     }
 }

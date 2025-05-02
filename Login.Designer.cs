@@ -48,7 +48,6 @@
             password.Name = "password";
             password.Size = new Size(170, 23);
             password.TabIndex = 0;
-            password.TextChanged += password_TextChanged;
             // 
             // label1
             // 

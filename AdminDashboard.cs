@@ -23,7 +23,6 @@ namespace IT_Helpdesk
             return "Server=127.0.0.1; Database=company_helpdesk; User ID=root; Password=;";
         }
 
-        // Load welcome name when form loads
         private void AdminDashboard_Load(object sender, EventArgs e)
         {
             using (MySqlConnection conn = new MySqlConnection(serverConnect()))
@@ -54,7 +53,6 @@ namespace IT_Helpdesk
             }
         }
 
-        // Handles X button or manual close
         private void AdminDashboard_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit(); // Ensures app completely closes
