@@ -68,7 +68,6 @@ C:\Users\User\source\repos\IT_Helpdesk\bin\Debug\net8.0-windows\runtimes\browser
 C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.csproj.AssemblyReference.cache
 C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.AdminDashboard.resources
 C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.CreateTicketForm.resources
-C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.Form1.resources
 C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.Login.resources
 C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.UserDashboard.resources
 C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.csproj.GenerateResource.cache
@@ -83,3 +82,8 @@ C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\refint\IT_Helpde
 C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.pdb
 C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.genruntimeconfig.cache
 C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\ref\IT_Helpdesk.dll
+C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.History.resources
+C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.ReassignForm.resources
+C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.eeAccManager.resources
+C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.TicketRecords.resources
+C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.Properties.Resources.resources

@@ -3,28 +3,47 @@
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|c:\\users\\user\\source\\repos\\it_helpdesk\\createticketform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|solutionrelative:createticketform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|c:\\users\\user\\source\\repos\\it_helpdesk\\userdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|solutionrelative:userdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|c:\\users\\user\\source\\repos\\it_helpdesk\\admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|solutionrelative:admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|c:\\users\\user\\source\\repos\\it_helpdesk\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|c:\\users\\user\\source\\repos\\it_helpdesk\\userdashboard.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|solutionrelative:userdashboard.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|c:\\users\\user\\source\\repos\\it_helpdesk\\admindashboard.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|solutionrelative:admindashboard.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|c:\\users\\user\\source\\repos\\it_helpdesk\\userdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|solutionrelative:userdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|c:\\users\\user\\source\\repos\\it_helpdesk\\createticketform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|C:\\Users\\User\\source\\repos\\IT_Helpdesk\\admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|solutionrelative:admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|C:\\Users\\User\\source\\repos\\IT_Helpdesk\\userdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|solutionrelative:userdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|C:\\Users\\User\\source\\repos\\IT_Helpdesk\\eeaccmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|solutionrelative:eeaccmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|C:\\Users\\User\\source\\repos\\IT_Helpdesk\\history.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|solutionrelative:history.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|C:\\Users\\User\\source\\repos\\IT_Helpdesk\\createticketform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|solutionrelative:createticketform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|C:\\Users\\User\\source\\repos\\IT_Helpdesk\\reassignform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|solutionrelative:reassignform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|C:\\Users\\User\\source\\repos\\IT_Helpdesk\\ticketrecords.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|solutionrelative:ticketrecords.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,109 +53,142 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Login.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\Login.cs",
-              "RelativeDocumentMoniker": "Login.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\Login.cs",
-              "RelativeToolTip": "Login.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAwwBoAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-01T09:20:40.502Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{2d7728c2-de0a-45b5-99aa-89b609dfde73}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserDashboard.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\UserDashboard.Designer.cs",
-              "RelativeDocumentMoniker": "UserDashboard.Designer.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\UserDashboard.Designer.cs",
-              "RelativeToolTip": "UserDashboard.Designer.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAowEwAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T14:20:14.481Z",
+              "DocumentIndex": 0,
+              "Title": "Microsoft.Common.CurrentVersion.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ViewState": "AgIAANwUAAAAAAAAAAAhwPMUAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-05-22T11:10:20.068Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UserDashboard.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\UserDashboard.cs",
-              "RelativeDocumentMoniker": "UserDashboard.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\UserDashboard.cs [Design]",
-              "RelativeToolTip": "UserDashboard.cs [Design]",
+              "Title": "AdminDashboard.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminDashboard.cs",
+              "RelativeDocumentMoniker": "AdminDashboard.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminDashboard.cs",
+              "RelativeToolTip": "AdminDashboard.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T14:09:19.999Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CreateTicketForm.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\CreateTicketForm.cs",
-              "RelativeDocumentMoniker": "CreateTicketForm.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\CreateTicketForm.cs",
-              "RelativeToolTip": "CreateTicketForm.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwD8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T01:27:29.043Z",
+              "WhenOpened": "2025-05-12T22:11:14.945Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
+              "Title": "AdminDashboard.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminDashboard.Designer.cs",
+              "RelativeDocumentMoniker": "AdminDashboard.Designer.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminDashboard.Designer.cs",
+              "RelativeToolTip": "AdminDashboard.Designer.cs",
+              "ViewState": "AgIAAM4AAAAAAAAAAAAcwOMAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T22:19:31.934Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "UserDashboard.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\UserDashboard.cs",
               "RelativeDocumentMoniker": "UserDashboard.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\UserDashboard.cs",
               "RelativeToolTip": "UserDashboard.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAowCoAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAIwGsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T00:20:21.772Z",
+              "WhenOpened": "2025-05-12T22:16:03.044Z",
               "EditorCaption": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "43f60b0c-573f-456b-9d7a-d4d1a55a6bf8",
-        "Display": 0,
-        "X": 1064,
-        "Y": 111,
-        "Width": 384,
-        "Height": 853,
-        "WindowState": 0
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
+            },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
+              "Title": "AdminDashboard.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminDashboard.cs",
+              "RelativeDocumentMoniker": "AdminDashboard.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminDashboard.cs [Design]",
+              "RelativeToolTip": "AdminDashboard.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T22:03:49.325Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "eeAccManager.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\eeAccManager.cs",
+              "RelativeDocumentMoniker": "eeAccManager.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\eeAccManager.cs [Design]",
+              "RelativeToolTip": "eeAccManager.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T15:10:47.11Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "History.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\History.cs",
+              "RelativeDocumentMoniker": "History.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\History.cs [Design]",
+              "RelativeToolTip": "History.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T16:18:04.733Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "CreateTicketForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\CreateTicketForm.cs",
               "RelativeDocumentMoniker": "CreateTicketForm.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\CreateTicketForm.cs [Design]",
               "RelativeToolTip": "CreateTicketForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T01:23:20.772Z",
+              "WhenOpened": "2025-05-12T15:10:44.917Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserDashboard.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\UserDashboard.cs",
+              "RelativeDocumentMoniker": "UserDashboard.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\UserDashboard.cs [Design]",
+              "RelativeToolTip": "UserDashboard.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T15:10:52.454Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ReassignForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\ReassignForm.cs",
+              "RelativeDocumentMoniker": "ReassignForm.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\ReassignForm.cs [Design]",
+              "RelativeToolTip": "ReassignForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T15:10:49.901Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TicketRecords.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\TicketRecords.cs",
+              "RelativeDocumentMoniker": "TicketRecords.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\TicketRecords.cs [Design]",
+              "RelativeToolTip": "TicketRecords.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T15:10:51.173Z"
             }
           ]
         }

@@ -44,16 +44,18 @@
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(12, 371);
+            txtDescription.Location = new Point(12, 344);
+            txtDescription.MaxLength = 500;
             txtDescription.Multiline = true;
             txtDescription.Name = "txtDescription";
             txtDescription.Size = new Size(267, 150);
             txtDescription.TabIndex = 0;
+            txtDescription.TextChanged += txtDescription_TextChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 60);
+            label1.Location = new Point(12, 33);
             label1.Name = "label1";
             label1.Size = new Size(29, 15);
             label1.TabIndex = 1;
@@ -62,7 +64,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 123);
+            label2.Location = new Point(12, 96);
             label2.Name = "label2";
             label2.Size = new Size(55, 15);
             label2.TabIndex = 1;
@@ -72,7 +74,7 @@
             // 
             cmbCategory.FormattingEnabled = true;
             cmbCategory.Items.AddRange(new object[] { "Technical Issue", "Software Request", "Hardware Issue", "Network Problem", "Access Request", "Account/Password Issue", "Maintenance Request", "Facility Issue", "General Inquiry" });
-            cmbCategory.Location = new Point(12, 141);
+            cmbCategory.Location = new Point(12, 114);
             cmbCategory.Name = "cmbCategory";
             cmbCategory.Size = new Size(171, 23);
             cmbCategory.TabIndex = 2;
@@ -80,7 +82,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 258);
+            label3.Location = new Point(12, 231);
             label3.Name = "label3";
             label3.Size = new Size(45, 15);
             label3.TabIndex = 1;
@@ -90,7 +92,7 @@
             // 
             cmbPriority.FormattingEnabled = true;
             cmbPriority.Items.AddRange(new object[] { "Low", "Normal", "High", "Urgent" });
-            cmbPriority.Location = new Point(12, 276);
+            cmbPriority.Location = new Point(12, 249);
             cmbPriority.Name = "cmbPriority";
             cmbPriority.Size = new Size(171, 23);
             cmbPriority.TabIndex = 2;
@@ -98,7 +100,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(12, 353);
+            label4.Location = new Point(12, 326);
             label4.Name = "label4";
             label4.Size = new Size(67, 15);
             label4.TabIndex = 1;
@@ -106,14 +108,14 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(12, 78);
+            textBox1.Location = new Point(12, 51);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(267, 23);
             textBox1.TabIndex = 0;
             // 
             // btnSubmit
             // 
-            btnSubmit.Location = new Point(108, 546);
+            btnSubmit.Location = new Point(108, 519);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(75, 23);
             btnSubmit.TabIndex = 3;
@@ -123,7 +125,7 @@
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(12, 546);
+            btnCancel.Location = new Point(12, 519);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(75, 23);
             btnCancel.TabIndex = 3;
@@ -135,7 +137,7 @@
             // 
             cmbDepartment.FormattingEnabled = true;
             cmbDepartment.Items.AddRange(new object[] { "Human Resources", "Finance", "Administration", "Operations", "Customer Service", "Maintenance" });
-            cmbDepartment.Location = new Point(12, 206);
+            cmbDepartment.Location = new Point(12, 179);
             cmbDepartment.Name = "cmbDepartment";
             cmbDepartment.Size = new Size(171, 23);
             cmbDepartment.TabIndex = 2;
@@ -143,7 +145,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(12, 188);
+            label5.Location = new Point(12, 161);
             label5.Name = "label5";
             label5.Size = new Size(70, 15);
             label5.TabIndex = 1;
@@ -153,6 +155,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.IT_HelpdeskBG;
             ClientSize = new Size(308, 602);
             Controls.Add(btnCancel);
             Controls.Add(btnSubmit);
@@ -167,12 +170,14 @@
             Controls.Add(textBox1);
             Controls.Add(txtDescription);
             Name = "CreateTicketForm";
+            Text = "Create Ticket";
             Load += CreateTicketForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
+
 
         private TextBox txtDescription;
         private Label label1;

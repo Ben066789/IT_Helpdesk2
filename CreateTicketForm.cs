@@ -13,6 +13,7 @@ namespace IT_Helpdesk
         {
             InitializeComponent();
             this.userId = userId;
+            this.AutoScaleMode = AutoScaleMode.Dpi;
         }
 
         private void CreateTicketForm_Load(object sender, EventArgs e)
@@ -28,12 +29,40 @@ namespace IT_Helpdesk
                 try
                 {
                     conn.Open();
-                    string query = @"INSERT INTO tickets 
-                        (user_id, title, description, category, priority, department, status, created_at, updated_at) 
-                        VALUES 
-                        (@user_id, @title, @description, @category, @priority, @department, 'Open', @created_at, @updated_at)";
 
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    // Step 1: Find least-loaded admin
+                    int assignedAdminId = -1;
+                    string assignedAdminName = "Unassigned";
+
+                    string getAdminQuery = @"
+            SELECT userID
+            FROM accounts
+            WHERE role = 'admin'
+            ORDER BY (
+                SELECT COUNT(*) 
+                FROM tickets 
+                WHERE assigned_to = accounts.userID AND status = 'Open'
+            ) ASC
+            LIMIT 1;
+        ";
+
+                    using (MySqlCommand adminCmd = new MySqlCommand(getAdminQuery, conn))
+                    {
+                        var result = adminCmd.ExecuteScalar();
+                        if (result != null)
+                        {
+                            assignedAdminId = Convert.ToInt32(result);
+                        }
+                    }
+
+                    // Step 2: Insert ticket
+                    string insertQuery = @"
+            INSERT INTO tickets 
+            (user_id, title, description, category, priority, department, status, created_at, updated_at, assigned_to) 
+            VALUES 
+            (@user_id, @title, @description, @category, @priority, @department, 'Open', @created_at, @updated_at, @assigned_to)";
+
+                    using (MySqlCommand cmd = new MySqlCommand(insertQuery, conn))
                     {
                         DateTime now = DateTime.Now;
 
@@ -45,11 +74,31 @@ namespace IT_Helpdesk
                         cmd.Parameters.AddWithValue("@department", cmbDepartment.Text);
                         cmd.Parameters.AddWithValue("@created_at", now);
                         cmd.Parameters.AddWithValue("@updated_at", now);
+                        cmd.Parameters.AddWithValue("@assigned_to", assignedAdminId);
 
                         cmd.ExecuteNonQuery();
                     }
 
-                    MessageBox.Show("Ticket submitted successfully!");
+                    // Step 3: Fetch full name of assigned admin
+                    if (assignedAdminId != -1)
+                    {
+                        string nameQuery = @"
+                SELECT CONCAT(firstname, ' ', lastname) AS fullname 
+                FROM accounts 
+                WHERE userID = @adminId";
+
+                        using (MySqlCommand nameCmd = new MySqlCommand(nameQuery, conn))
+                        {
+                            nameCmd.Parameters.AddWithValue("@adminId", assignedAdminId);
+                            object result = nameCmd.ExecuteScalar();
+                            if (result != null)
+                            {
+                                assignedAdminName = result.ToString();
+                            }
+                        }
+                    }
+
+                    MessageBox.Show("Ticket submitted and assigned to: " + assignedAdminName);
                     this.Close();
                 }
                 catch (Exception ex)
@@ -57,11 +106,17 @@ namespace IT_Helpdesk
                     MessageBox.Show("Error: " + ex.Message);
                 }
             }
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtDescription_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

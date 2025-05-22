@@ -33,6 +33,8 @@
             label1 = new Label();
             label2 = new Label();
             loginButton = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // username
@@ -48,6 +50,7 @@
             password.Name = "password";
             password.Size = new Size(170, 23);
             password.TabIndex = 0;
+            password.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -76,18 +79,31 @@
             loginButton.Text = "Login";
             loginButton.Click += loginButton_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = Properties.Resources.itHelpdeskLogo;
+            pictureBox1.Location = new Point(12, -26);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(418, 327);
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.IT_HelpdeskBG;
             ClientSize = new Size(432, 450);
             Controls.Add(loginButton);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(password);
             Controls.Add(username);
+            Controls.Add(pictureBox1);
             Name = "Login";
-            Text = "Form1";
+            Text = "Login - IT Helpdesk";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -99,5 +115,6 @@
         private Label label1;
         private Label label2;
         private Button loginButton;
+        private PictureBox pictureBox1;
     }
 }

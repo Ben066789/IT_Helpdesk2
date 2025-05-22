@@ -4,10 +4,22 @@
     <Compile Update="CreateTicketForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="eeAccManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Login.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ReassignForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="History.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="AdminDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="TicketRecords.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="UserDashboard.cs">
