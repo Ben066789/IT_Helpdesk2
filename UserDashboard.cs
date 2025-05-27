@@ -22,6 +22,7 @@ namespace IT_Helpdesk
             this.FormClosed += logoutBtn_Click;
             this.FormClosing += UserDashboard_FormClosing;
             this.AutoScaleMode = AutoScaleMode.Dpi;
+            dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
         }
         private string serverConnect()
         {
@@ -73,10 +74,10 @@ namespace IT_Helpdesk
         description, 
         created_at,
         CONCAT(a.firstname, ' ', a.lastname) AS assigned_to
-    FROM tickets t
-    LEFT JOIN accounts a ON t.assigned_to = a.userID
-    WHERE t.user_id = @userId AND t.status != 'Closed'
-    ORDER BY t.created_at DESC";
+        FROM tickets t
+        LEFT JOIN accounts a ON t.assigned_to = a.userID
+        WHERE t.user_id = @userId AND t.status != 'Closed'
+        ORDER BY t.created_at DESC";
 
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -89,7 +90,6 @@ namespace IT_Helpdesk
                 dataGridView1.DataSource = ticketTable;
             }
         }
-
         private void createButton_Click(object sender, EventArgs e)
         {
             CreateTicketForm createForm = new CreateTicketForm(userId);
@@ -149,34 +149,28 @@ namespace IT_Helpdesk
             }
             timer1.Start();
         }
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Check if the clicked row is a valid row (not a header)
+            if (e.RowIndex >= 0)
+            {
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                    int ticketId = Convert.ToInt32(row.Cells["ticket_id"].Value);
+                    string status = row.Cells["status"].Value.ToString().Trim();
+
+                    userTicketStatusCheck statusForm = new userTicketStatusCheck(ticketId, status);
+                    statusForm.ShowDialog();
+
+                    LoadTickets();
+                }
+            }
+        }
+
+
         private void timer1_Tick(object sender, EventArgs e)
         {
         }
     }
-
-
-    /*private void cancelButton_Click(object sender, EventArgs e)
-    {
-        if (dataGridView1.SelectedRows.Count > 0)
-        {
-            int ticketId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["ticket_id"].Value);
-            string query = "UPDATE tickets SET status = 'Cancelled' WHERE ticket_id = @ticketId";
-
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@ticketId", ticketId);
-
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-            }
-
-            LoadTickets();
-        }
-        else
-        {
-            MessageBox.Show("Please select a ticket to cancel.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-    }*/
 }

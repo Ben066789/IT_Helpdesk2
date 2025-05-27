@@ -63,6 +63,16 @@ namespace IT_Helpdesk.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1_Opened {
+            get {
+                object obj = ResourceManager.GetObject("1-Opened", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IT_HelpdeskBG {
             get {
                 object obj = ResourceManager.GetObject("IT_HelpdeskBG", resourceCulture);
@@ -96,6 +106,36 @@ namespace IT_Helpdesk.Properties {
         internal static System.Drawing.Bitmap logo1 {
             get {
                 object obj = ResourceManager.GetObject("logo1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap statusLogistics {
+            get {
+                object obj = ResourceManager.GetObject("statusLogistics", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap testLogisticSize {
+            get {
+                object obj = ResourceManager.GetObject("testLogisticSize", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap testLogisticSize1 {
+            get {
+                object obj = ResourceManager.GetObject("testLogisticSize1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
