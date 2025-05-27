@@ -24,6 +24,7 @@ namespace IT_Helpdesk
             adminDataGridViewStyling();
             LoadClosedTicketsHistory();
             historyDataGridViewStyling();
+            cmbStatus.SelectedIndexChanged += cmbStatus_SelectedIndexChanged;
         }// Constructor receives the logged-in username
 
         private string serverConnect()
@@ -401,6 +402,24 @@ namespace IT_Helpdesk
             this.Hide();
             Login loginForm = new Login();
             loginForm.Show();
+        }
+        private void cmbStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string newStatus = cmbStatus.SelectedItem?.ToString();
+            if (string.IsNullOrEmpty(newStatus)) return;
+
+            using (MySqlConnection conn = new MySqlConnection(serverConnect()))
+            {
+                conn.Open();
+                string query = "UPDATE accounts SET eeStatus = @eeStatus WHERE userID = @userId";
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@eeStatus", newStatus);
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            MessageBox.Show("Availability status updated to: " + newStatus);
         }
     }
 }

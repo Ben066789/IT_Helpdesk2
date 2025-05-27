@@ -65,7 +65,7 @@ namespace IT_Helpdesk
         private void LoadTickets()
         {
             string query = @"
-         SELECT 
+        SELECT 
         ticket_id, 
         title, 
         category, 

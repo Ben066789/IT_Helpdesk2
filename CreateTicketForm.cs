@@ -35,16 +35,10 @@ namespace IT_Helpdesk
                     string assignedAdminName = "Unassigned";
 
                     string getAdminQuery = @"
-            SELECT userID
-            FROM accounts
-            WHERE role = 'admin'
-            ORDER BY (
-                SELECT COUNT(*) 
-                FROM tickets 
-                WHERE assigned_to = accounts.userID AND status = 'Open'
-            ) ASC
-            LIMIT 1;
-        ";
+                    SELECT userID FROM accounts
+                    WHERE role = 'admin' AND eeStatus = 'Available'
+                    ORDER BY (SELECT COUNT(*) FROM tickets 
+                    WHERE assigned_to = accounts.userID AND status = 'Open') ASC LIMIT 1;";
 
                     using (MySqlCommand adminCmd = new MySqlCommand(getAdminQuery, conn))
                     {
@@ -57,10 +51,10 @@ namespace IT_Helpdesk
 
                     // Step 2: Insert ticket
                     string insertQuery = @"
-            INSERT INTO tickets 
-            (user_id, title, description, category, priority, department, status, created_at, updated_at, assigned_to) 
-            VALUES 
-            (@user_id, @title, @description, @category, @priority, @department, 'Open', @created_at, @updated_at, @assigned_to)";
+                    INSERT INTO tickets 
+                    (user_id, title, description, category, priority, department, status, created_at, updated_at, assigned_to) 
+                    VALUES 
+                    (@user_id, @title, @description, @category, @priority, @department, 'Open', @created_at, @updated_at, @assigned_to)";
 
                     using (MySqlCommand cmd = new MySqlCommand(insertQuery, conn))
                     {

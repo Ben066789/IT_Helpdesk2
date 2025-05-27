@@ -43,6 +43,7 @@
             pendingLbl = new Label();
             historyLbl = new Label();
             panel1 = new Panel();
+            cmbStatus = new ComboBox();
             searchButton = new Button();
             historySearchBar = new TextBox();
             logoutBtn = new Button();
@@ -157,20 +158,22 @@
             // pendingLbl
             // 
             pendingLbl.AutoSize = true;
-            pendingLbl.Font = new Font("Segoe UI", 15F);
+            pendingLbl.BackColor = Color.Transparent;
+            pendingLbl.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             pendingLbl.Location = new Point(263, 48);
             pendingLbl.Name = "pendingLbl";
-            pendingLbl.Size = new Size(83, 28);
+            pendingLbl.Size = new Size(88, 28);
             pendingLbl.TabIndex = 8;
             pendingLbl.Text = "Pending";
             // 
             // historyLbl
             // 
             historyLbl.AutoSize = true;
-            historyLbl.Font = new Font("Segoe UI", 15F);
+            historyLbl.BackColor = Color.Transparent;
+            historyLbl.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
             historyLbl.Location = new Point(263, 360);
             historyLbl.Name = "historyLbl";
-            historyLbl.Size = new Size(75, 28);
+            historyLbl.Size = new Size(82, 28);
             historyLbl.TabIndex = 8;
             historyLbl.Text = "History";
             // 
@@ -178,6 +181,7 @@
             // 
             panel1.AutoScroll = true;
             panel1.BackgroundImage = Properties.Resources.IT_HelpdeskBG;
+            panel1.Controls.Add(cmbStatus);
             panel1.Controls.Add(searchButton);
             panel1.Controls.Add(historySearchBar);
             panel1.Controls.Add(historyLbl);
@@ -198,6 +202,17 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1495, 669);
             panel1.TabIndex = 9;
+            // 
+            // cmbStatus
+            // 
+            cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbStatus.FlatStyle = FlatStyle.System;
+            cmbStatus.FormattingEnabled = true;
+            cmbStatus.Items.AddRange(new object[] { "Available", "Unavailable" });
+            cmbStatus.Location = new Point(263, 13);
+            cmbStatus.Name = "cmbStatus";
+            cmbStatus.Size = new Size(100, 23);
+            cmbStatus.TabIndex = 11;
             // 
             // searchButton
             // 
@@ -265,5 +280,6 @@
         private Button searchButton;
         private TextBox historySearchBar;
         private Button logoutBtn;
+        private ComboBox cmbStatus;
     }
 }
