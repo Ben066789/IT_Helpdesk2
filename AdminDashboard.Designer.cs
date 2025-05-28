@@ -33,16 +33,13 @@
             adminDataGridView = new DataGridView();
             eeAccManagerBtn = new Button();
             ticketRecordsBtn = new Button();
-            reassignBtn = new Button();
             lblDateTime = new Label();
-            statusCmb = new ComboBox();
-            updateBtn = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
-            noteTxtBox = new TextBox();
             historyDataGridView = new DataGridView();
             pendingLbl = new Label();
             historyLbl = new Label();
             panel1 = new Panel();
+            label1 = new Label();
             cmbStatus = new ComboBox();
             searchButton = new Button();
             historySearchBar = new TextBox();
@@ -55,6 +52,7 @@
             // lblWelcome
             // 
             lblWelcome.AutoSize = true;
+            lblWelcome.BackColor = Color.Transparent;
             lblWelcome.Font = new Font("Segoe UI", 15F);
             lblWelcome.Location = new Point(12, 9);
             lblWelcome.Name = "lblWelcome";
@@ -75,7 +73,7 @@
             // eeAccManagerBtn
             // 
             eeAccManagerBtn.AutoEllipsis = true;
-            eeAccManagerBtn.Location = new Point(46, 391);
+            eeAccManagerBtn.Location = new Point(46, 85);
             eeAccManagerBtn.Name = "eeAccManagerBtn";
             eeAccManagerBtn.Size = new Size(177, 33);
             eeAccManagerBtn.TabIndex = 4;
@@ -86,23 +84,13 @@
             // ticketRecordsBtn
             // 
             ticketRecordsBtn.AutoEllipsis = true;
-            ticketRecordsBtn.Location = new Point(46, 430);
+            ticketRecordsBtn.Location = new Point(46, 152);
             ticketRecordsBtn.Name = "ticketRecordsBtn";
             ticketRecordsBtn.Size = new Size(177, 33);
             ticketRecordsBtn.TabIndex = 4;
             ticketRecordsBtn.Text = "Ticket Records";
             ticketRecordsBtn.UseVisualStyleBackColor = true;
             ticketRecordsBtn.Click += ticketRecordsBtn_Click;
-            // 
-            // reassignBtn
-            // 
-            reassignBtn.Location = new Point(46, 284);
-            reassignBtn.Name = "reassignBtn";
-            reassignBtn.Size = new Size(177, 33);
-            reassignBtn.TabIndex = 4;
-            reassignBtn.Text = "Reassign";
-            reassignBtn.UseVisualStyleBackColor = true;
-            reassignBtn.Click += reassignBtn_Click;
             // 
             // lblDateTime
             // 
@@ -113,37 +101,9 @@
             lblDateTime.TabIndex = 5;
             lblDateTime.Text = "TimeDate";
             // 
-            // statusCmb
-            // 
-            statusCmb.FormattingEnabled = true;
-            statusCmb.Items.AddRange(new object[] { "Open", "In Progress", "Closed" });
-            statusCmb.Location = new Point(77, 50);
-            statusCmb.Name = "statusCmb";
-            statusCmb.Size = new Size(115, 23);
-            statusCmb.TabIndex = 6;
-            // 
-            // updateBtn
-            // 
-            updateBtn.Location = new Point(46, 245);
-            updateBtn.Name = "updateBtn";
-            updateBtn.Size = new Size(177, 33);
-            updateBtn.TabIndex = 4;
-            updateBtn.Text = "Update";
-            updateBtn.UseVisualStyleBackColor = true;
-            updateBtn.Click += update_Click;
-            // 
             // timer1
             // 
             timer1.Tick += timer1_Tick;
-            // 
-            // noteTxtBox
-            // 
-            noteTxtBox.ImeMode = ImeMode.Off;
-            noteTxtBox.Location = new Point(24, 79);
-            noteTxtBox.Multiline = true;
-            noteTxtBox.Name = "noteTxtBox";
-            noteTxtBox.Size = new Size(221, 160);
-            noteTxtBox.TabIndex = 7;
             // 
             // historyDataGridView
             // 
@@ -181,16 +141,13 @@
             // 
             panel1.AutoScroll = true;
             panel1.BackgroundImage = Properties.Resources.IT_HelpdeskBG;
+            panel1.Controls.Add(label1);
             panel1.Controls.Add(cmbStatus);
             panel1.Controls.Add(searchButton);
             panel1.Controls.Add(historySearchBar);
             panel1.Controls.Add(historyLbl);
             panel1.Controls.Add(pendingLbl);
-            panel1.Controls.Add(noteTxtBox);
-            panel1.Controls.Add(statusCmb);
             panel1.Controls.Add(lblDateTime);
-            panel1.Controls.Add(reassignBtn);
-            panel1.Controls.Add(updateBtn);
             panel1.Controls.Add(logoutBtn);
             panel1.Controls.Add(ticketRecordsBtn);
             panel1.Controls.Add(eeAccManagerBtn);
@@ -202,6 +159,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1495, 669);
             panel1.TabIndex = 9;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Location = new Point(366, 18);
+            label1.Name = "label1";
+            label1.Size = new Size(39, 15);
+            label1.TabIndex = 12;
+            label1.Text = "Status";
             // 
             // cmbStatus
             // 
@@ -250,7 +217,7 @@
             ClientSize = new Size(1495, 669);
             Controls.Add(panel1);
             Name = "AdminDashboard";
-            Text = "Form2";
+            Text = "Admin";
             Load += AdminDashboard_Load;
             ((System.ComponentModel.ISupportInitialize)adminDataGridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)historyDataGridView).EndInit();
@@ -267,12 +234,8 @@
         private DataGridView adminDataGridView;
         private Button eeAccManagerBtn;
         private Button ticketRecordsBtn;
-        private Button reassignBtn;
         private Label lblDateTime;
-        private ComboBox statusCmb;
-        private Button updateBtn;
         private System.Windows.Forms.Timer timer1;
-        private TextBox noteTxtBox;
         private DataGridView historyDataGridView;
         private Label pendingLbl;
         private Label historyLbl;
@@ -281,5 +244,6 @@
         private TextBox historySearchBar;
         private Button logoutBtn;
         private ComboBox cmbStatus;
+        private Label label1;
     }
 }

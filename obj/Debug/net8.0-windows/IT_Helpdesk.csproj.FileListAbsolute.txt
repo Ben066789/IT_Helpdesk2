@@ -83,7 +83,6 @@ C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.pdb
 C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.genruntimeconfig.cache
 C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\ref\IT_Helpdesk.dll
 C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.History.resources
-C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.ReassignForm.resources
 C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.eeAccManager.resources
 C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.TicketRecords.resources
 C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.Properties.Resources.resources
@@ -95,3 +94,6 @@ C:\Users\User\source\repos\IT_Helpdesk\bin\Debug\net8.0-windows\progressTracker_
 C:\Users\User\source\repos\IT_Helpdesk\bin\Debug\net8.0-windows\progressTracker_ITHelpdesk\On Hold.png
 C:\Users\User\source\repos\IT_Helpdesk\bin\Debug\net8.0-windows\progressTracker_ITHelpdesk\Resolved.png
 C:\Users\User\source\repos\IT_Helpdesk\bin\Debug\net8.0-windows\progressTracker_ITHelpdesk\testLogisticSize.png
+C:\Users\User\source\repos\IT_Helpdesk\bin\Debug\net8.0-windows\progressTracker_ITHelpdesk\Open.png
+C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.AdminTicketManager.resources
+C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.onHoverProgressRemarks.resources

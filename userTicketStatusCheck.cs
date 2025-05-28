@@ -16,14 +16,19 @@ namespace IT_Helpdesk
     {
         private string status;
         private int ticketId;
+        private int userId;
+        private onHoverProgressRemarks hoverRemarksForm;
 
-        public userTicketStatusCheck(int ticketId, string status)
+        public userTicketStatusCheck(int ticketId, string status, int userId)
         {
             InitializeComponent();
             this.ticketId = ticketId;
             this.status = status;
+            this.userId = userId;
             LoadTicketStatus();
             LoadStatusBarImage();
+            onHoverTrigger.MouseEnter += onHoverTrigger_MouseEnter;
+            onHoverTrigger.MouseLeave += onHoverTrigger_MouseLeave;
         }
         private string serverConnect()
         {
@@ -33,7 +38,7 @@ namespace IT_Helpdesk
         private void LoadTicketStatus()
         {
             string query = @"
-        SELECT 
+            SELECT 
             ticket_id, 
             title, 
             category, 
@@ -42,9 +47,9 @@ namespace IT_Helpdesk
             description, 
             created_at,
             CONCAT(a.firstname, ' ', a.lastname) AS assigned_to
-        FROM tickets t
-        LEFT JOIN accounts a ON t.assigned_to = a.userID
-        WHERE t.ticket_id = @ticketId";
+            FROM tickets t
+            LEFT JOIN accounts a ON t.assigned_to = a.userID
+            WHERE t.ticket_id = @ticketId";
 
             using (MySqlConnection conn = new MySqlConnection(serverConnect()))
             {
@@ -59,7 +64,7 @@ namespace IT_Helpdesk
                         {
                             lblTicketTitle.Text = reader["title"].ToString();
                             lblCategory.Text = reader["category"].ToString();
-                            // Update the status field from the DB
+                            lblDesc.Text = reader["description"].ToString();
                             this.status = reader["status"].ToString();
                             // Optionally update status label
                             // lblStatus.Text = this.status;
@@ -95,7 +100,7 @@ namespace IT_Helpdesk
             switch (status)
             {
                 case "Open":
-                    return Path.Combine(Application.StartupPath, "progressTracker_ITHelpdesk", "Opened.png"); //ticket has been made
+                    return Path.Combine(Application.StartupPath, "progressTracker_ITHelpdesk", "Open.png"); //ticket has been made
                 case "Assigned":
                     return Path.Combine(Application.StartupPath, "progressTracker_ITHelpdesk", "Assigned.png"); //ticket has been assigned to an admin
                 case "On Hold":
@@ -115,7 +120,6 @@ namespace IT_Helpdesk
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            // 1. Update the status in the database
             string updateQuery = "UPDATE tickets SET status = 'Completed' WHERE ticket_id = @ticketId";
             using (MySqlConnection conn = new MySqlConnection(serverConnect()))
             {
@@ -127,7 +131,6 @@ namespace IT_Helpdesk
                 }
             }
 
-            // 2. Update the local status and refresh the image
             this.status = "Completed";
             LoadStatusBarImage();
 
@@ -137,6 +140,24 @@ namespace IT_Helpdesk
             MessageBox.Show("Ticket marked as Completed.");
             btnConfirm.Enabled = false;
         }
+        private void onHoverTrigger_MouseEnter(object sender, EventArgs e)
+        {
+            if (hoverRemarksForm == null || hoverRemarksForm.IsDisposed)
+            {
+                hoverRemarksForm = new onHoverProgressRemarks(ticketId, userId); // Pass ticketId if needed
+                hoverRemarksForm.StartPosition = FormStartPosition.Manual;
+                // Position the form next to the panel
+                var panelLocation = this.PointToScreen(onHoverTrigger.Location);
+                hoverRemarksForm.Location = new Point(panelLocation.X + onHoverTrigger.Width, panelLocation.Y);
+                hoverRemarksForm.Show(this);
+            }
+        }
+        private void onHoverTrigger_MouseLeave(object sender, EventArgs e)
+        {
+            if (hoverRemarksForm != null && !hoverRemarksForm.IsDisposed)
+            {
+                hoverRemarksForm.Close();
+            }
+        }
     }
-
 }

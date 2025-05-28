@@ -25,6 +25,7 @@ namespace IT_Helpdesk
             LoadClosedTicketsHistory();
             historyDataGridViewStyling();
             cmbStatus.SelectedIndexChanged += cmbStatus_SelectedIndexChanged;
+            adminDataGridView.CellClick += adminDataGridView_CellClick;
         }// Constructor receives the logged-in username
 
         private string serverConnect()
@@ -182,7 +183,6 @@ namespace IT_Helpdesk
                 }
             }
             timer1.Start();
-            noteTxtBox.PlaceholderText = "Write a comment or update...";
         }
 
         private void AdminDashboard_FormClosed(object sender, FormClosedEventArgs e)
@@ -202,7 +202,7 @@ namespace IT_Helpdesk
             }
         }
 
-        private void update_Click(object sender, EventArgs e)
+        /*private void update_Click(object sender, EventArgs e)
         {
             if (adminDataGridView.SelectedRows.Count > 0)
             {
@@ -245,14 +245,14 @@ namespace IT_Helpdesk
             {
                 MessageBox.Show("Please select a ticket to update.");
             }
-        }
+        }*/
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblDateTime.Text = DateTime.Now.ToString("f");
         }
 
-        private void reassignBtn_Click(object sender, EventArgs e)
+        /*private void reassignBtn_Click(object sender, EventArgs e)
         {
             if (adminDataGridView.SelectedRows.Count > 0)
             {
@@ -267,7 +267,7 @@ namespace IT_Helpdesk
                 }
 
                 // Create and show the reassign form
-                ReassignForm reassignForm = new ReassignForm(selectedTicketId);
+                AdminTicketManager reassignForm = new AdminTicketManager(selectedTicketId);
                 reassignForm.FormClosed += (s, args) => LoadAssignedTickets(); // Refresh the grid after reassignment
                 reassignForm.ShowDialog();
             }
@@ -275,7 +275,32 @@ namespace IT_Helpdesk
             {
                 MessageBox.Show("Please select a ticket to reassign.");
             }
+        }*/
+
+        private void adminDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Ignore header clicks
+            if (e.RowIndex < 0)
+                return;
+
+            DataGridViewRow row = adminDataGridView.Rows[e.RowIndex];
+            int selectedTicketId = Convert.ToInt32(row.Cells["ticket_id"].Value);
+            string ticketStatus = row.Cells["status"].Value.ToString().ToLower();
+
+            // Prevent reassignment of closed tickets
+            if (ticketStatus == "closed")
+            {
+                MessageBox.Show("This ticket is closed and cannot be reassigned.");
+                return;
+            }
+
+            // Open the AdminTicketManager form for the selected ticket
+            AdminTicketManager ticketManagerForm = new AdminTicketManager(selectedTicketId, userId);
+            ticketManagerForm.FormClosed += (s, args) => LoadAssignedTickets(); // Refresh the grid after reassignment
+            ticketManagerForm.ShowDialog();
         }
+
+
         private void LoadClosedTicketsHistory()
         {
             using (MySqlConnection conn = new MySqlConnection(serverConnect()))
@@ -295,11 +320,11 @@ namespace IT_Helpdesk
                 t.completed_at,
                 t.note,
                 CONCAT(adminAcc.firstname, ' ', adminAcc.lastname) AS handled_by
-            FROM tickets t
-            JOIN accounts userAcc ON t.user_id = userAcc.userID
-            LEFT JOIN accounts adminAcc ON t.assigned_to = adminAcc.userID
-            WHERE t.status = 'closed' AND t.assigned_to = @adminId
-            ORDER BY t.completed_at DESC";
+                FROM tickets t
+                JOIN accounts userAcc ON t.user_id = userAcc.userID
+                LEFT JOIN accounts adminAcc ON t.assigned_to = adminAcc.userID
+                WHERE t.status = 'closed' AND t.assigned_to = @adminId
+                ORDER BY t.completed_at DESC";
 
                 try
                 {

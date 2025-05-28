@@ -23,6 +23,8 @@ namespace IT_Helpdesk
             this.FormClosing += UserDashboard_FormClosing;
             this.AutoScaleMode = AutoScaleMode.Dpi;
             dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
+            dataGridView1.CellFormatting += dataGridView1_CellFormatting;
+            dataGridView1.AllowUserToAddRows = false;
         }
         private string serverConnect()
         {
@@ -56,28 +58,56 @@ namespace IT_Helpdesk
             dataGridView1.Columns["ticket_id"].HeaderText = "Ticket ID";
             dataGridView1.Columns["title"].HeaderText = "Title";
             dataGridView1.Columns["category"].HeaderText = "Category";
-            dataGridView1.Columns["priority"].HeaderText = "Priority";
-            dataGridView1.Columns["status"].HeaderText = "Status";
             dataGridView1.Columns["description"].HeaderText = "Description";
             dataGridView1.Columns["created_at"].HeaderText = "Date Created";
-            dataGridView1.Columns["assigned_to"].HeaderText = "Assigned Admin";
+            dataGridView1.Columns["priority"].HeaderText = "Priority";
+            dataGridView1.Columns["status"].HeaderText = "Status";
         }
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "status" && e.Value != null)
+            {
+                string status = e.Value.ToString().Trim();
+                switch (status)
+                {
+                    case "Open":
+                        e.CellStyle.ForeColor = ColorTranslator.FromHtml("#007BFF");
+                        break;
+                    case "Assigned":
+                        e.CellStyle.ForeColor = ColorTranslator.FromHtml("#17A2B8");
+                        break;
+                    case "On Hold":
+                        e.CellStyle.ForeColor = ColorTranslator.FromHtml("#FD7E14");
+                        break;
+                    case "In Progress":
+                        e.CellStyle.ForeColor = ColorTranslator.FromHtml("#FFC107");
+                        break;
+                    case "Resolved":
+                        e.CellStyle.ForeColor = ColorTranslator.FromHtml("#28A745");
+                        break;
+                    case "Completed":
+                        e.CellStyle.ForeColor = ColorTranslator.FromHtml("#218838");
+                        break;
+                    case "Closed":
+                        e.CellStyle.ForeColor = ColorTranslator.FromHtml("#6C757D");
+                        break;
+                    default:
+                        e.CellStyle.ForeColor = dataGridView1.DefaultCellStyle.ForeColor;
+                        break;
+                }
+            }
+        }
+
         private void LoadTickets()
         {
             string query = @"
         SELECT 
-        ticket_id, 
-        title, 
-        category, 
-        priority, 
-        status, 
-        description, 
-        created_at,
-        CONCAT(a.firstname, ' ', a.lastname) AS assigned_to
-        FROM tickets t
-        LEFT JOIN accounts a ON t.assigned_to = a.userID
-        WHERE t.user_id = @userId AND t.status != 'Closed'
-        ORDER BY t.created_at DESC";
+            ticket_id, title, category, description, created_at, priority, status
+            
+            FROM tickets t
+            LEFT JOIN accounts a ON t.assigned_to = a.userID
+            WHERE t.user_id = @userId AND t.status != 'Closed'
+            ORDER BY t.created_at DESC"; //CONCAT(a.firstname, ' ', a.lastname) AS assigned_to
 
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -160,7 +190,7 @@ namespace IT_Helpdesk
                     int ticketId = Convert.ToInt32(row.Cells["ticket_id"].Value);
                     string status = row.Cells["status"].Value.ToString().Trim();
 
-                    userTicketStatusCheck statusForm = new userTicketStatusCheck(ticketId, status);
+                    userTicketStatusCheck statusForm = new userTicketStatusCheck(ticketId, status, userId);
                     statusForm.ShowDialog();
 
                     LoadTickets();

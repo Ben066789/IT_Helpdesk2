@@ -34,7 +34,7 @@
             lblOpen = new Label();
             lblAssigned = new Label();
             lblOnHold = new Label();
-            lblInProgress = new Label();
+            onHoverTrigger = new Label();
             lblResolved = new Label();
             lblCompleted = new Label();
             lblClosed = new Label();
@@ -45,12 +45,14 @@
             lbl4AdminProgress = new Label();
             lbl5AdminProgress = new Label();
             lbl6AdminProgress = new Label();
+            lblDesc = new Label();
             ((System.ComponentModel.ISupportInitialize)pbStatusBar).BeginInit();
             SuspendLayout();
             // 
             // pbStatusBar
             // 
-            pbStatusBar.Location = new Point(12, 38);
+            pbStatusBar.BackColor = Color.Transparent;
+            pbStatusBar.Location = new Point(12, 104);
             pbStatusBar.Name = "pbStatusBar";
             pbStatusBar.Size = new Size(861, 110);
             pbStatusBar.TabIndex = 0;
@@ -60,7 +62,7 @@
             // 
             lblTicketTitle.AutoSize = true;
             lblTicketTitle.Font = new Font("Century Gothic", 18F, FontStyle.Bold);
-            lblTicketTitle.Location = new Point(12, 9);
+            lblTicketTitle.Location = new Point(8, 28);
             lblTicketTitle.Name = "lblTicketTitle";
             lblTicketTitle.Size = new Size(183, 28);
             lblTicketTitle.TabIndex = 2;
@@ -71,7 +73,7 @@
             lblCategory.AutoSize = true;
             lblCategory.Font = new Font("Century Gothic", 9F, FontStyle.Bold);
             lblCategory.ForeColor = Color.Gray;
-            lblCategory.Location = new Point(16, 35);
+            lblCategory.Location = new Point(12, 54);
             lblCategory.Name = "lblCategory";
             lblCategory.Size = new Size(91, 16);
             lblCategory.TabIndex = 2;
@@ -81,7 +83,7 @@
             // 
             lblOpen.AutoSize = true;
             lblOpen.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            lblOpen.Location = new Point(40, 136);
+            lblOpen.Location = new Point(40, 202);
             lblOpen.Name = "lblOpen";
             lblOpen.Size = new Size(53, 19);
             lblOpen.TabIndex = 3;
@@ -92,7 +94,7 @@
             // 
             lblAssigned.AutoSize = true;
             lblAssigned.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            lblAssigned.Location = new Point(152, 136);
+            lblAssigned.Location = new Point(152, 202);
             lblAssigned.Name = "lblAssigned";
             lblAssigned.Size = new Size(79, 19);
             lblAssigned.TabIndex = 3;
@@ -103,29 +105,29 @@
             // 
             lblOnHold.AutoSize = true;
             lblOnHold.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            lblOnHold.Location = new Point(277, 136);
+            lblOnHold.Location = new Point(277, 202);
             lblOnHold.Name = "lblOnHold";
             lblOnHold.Size = new Size(72, 19);
             lblOnHold.TabIndex = 3;
             lblOnHold.Text = "On Hold";
             lblOnHold.TextAlign = ContentAlignment.TopCenter;
             // 
-            // lblInProgress
+            // onHoverTrigger
             // 
-            lblInProgress.AutoSize = true;
-            lblInProgress.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            lblInProgress.Location = new Point(393, 136);
-            lblInProgress.Name = "lblInProgress";
-            lblInProgress.Size = new Size(89, 19);
-            lblInProgress.TabIndex = 3;
-            lblInProgress.Text = "In Progress";
-            lblInProgress.TextAlign = ContentAlignment.TopCenter;
+            onHoverTrigger.AutoSize = true;
+            onHoverTrigger.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
+            onHoverTrigger.Location = new Point(393, 202);
+            onHoverTrigger.Name = "onHoverTrigger";
+            onHoverTrigger.Size = new Size(89, 19);
+            onHoverTrigger.TabIndex = 3;
+            onHoverTrigger.Text = "In Progress";
+            onHoverTrigger.TextAlign = ContentAlignment.TopCenter;
             // 
             // lblResolved
             // 
             lblResolved.AutoSize = true;
             lblResolved.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            lblResolved.Location = new Point(522, 136);
+            lblResolved.Location = new Point(522, 202);
             lblResolved.Name = "lblResolved";
             lblResolved.Size = new Size(78, 19);
             lblResolved.TabIndex = 3;
@@ -136,7 +138,7 @@
             // 
             lblCompleted.AutoSize = true;
             lblCompleted.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            lblCompleted.Location = new Point(635, 136);
+            lblCompleted.Location = new Point(635, 202);
             lblCompleted.Name = "lblCompleted";
             lblCompleted.Size = new Size(97, 19);
             lblCompleted.TabIndex = 3;
@@ -147,7 +149,7 @@
             // 
             lblClosed.AutoSize = true;
             lblClosed.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            lblClosed.Location = new Point(780, 136);
+            lblClosed.Location = new Point(780, 202);
             lblClosed.Name = "lblClosed";
             lblClosed.Size = new Size(62, 19);
             lblClosed.TabIndex = 3;
@@ -156,7 +158,7 @@
             // 
             // btnConfirm
             // 
-            btnConfirm.Location = new Point(646, 163);
+            btnConfirm.Location = new Point(646, 229);
             btnConfirm.Name = "btnConfirm";
             btnConfirm.Size = new Size(75, 23);
             btnConfirm.TabIndex = 4;
@@ -169,7 +171,7 @@
             lbl1AdminProgress.AutoSize = true;
             lbl1AdminProgress.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lbl1AdminProgress.ForeColor = Color.Gray;
-            lbl1AdminProgress.Location = new Point(393, 155);
+            lbl1AdminProgress.Location = new Point(393, 221);
             lbl1AdminProgress.Name = "lbl1AdminProgress";
             lbl1AdminProgress.Size = new Size(0, 17);
             lbl1AdminProgress.TabIndex = 2;
@@ -179,7 +181,7 @@
             lbl2AdminProgress.AutoSize = true;
             lbl2AdminProgress.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lbl2AdminProgress.ForeColor = Color.Gray;
-            lbl2AdminProgress.Location = new Point(393, 172);
+            lbl2AdminProgress.Location = new Point(393, 238);
             lbl2AdminProgress.Name = "lbl2AdminProgress";
             lbl2AdminProgress.Size = new Size(0, 17);
             lbl2AdminProgress.TabIndex = 2;
@@ -189,7 +191,7 @@
             lbl3AdminProgress.AutoSize = true;
             lbl3AdminProgress.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lbl3AdminProgress.ForeColor = Color.Gray;
-            lbl3AdminProgress.Location = new Point(393, 189);
+            lbl3AdminProgress.Location = new Point(393, 255);
             lbl3AdminProgress.Name = "lbl3AdminProgress";
             lbl3AdminProgress.Size = new Size(0, 17);
             lbl3AdminProgress.TabIndex = 2;
@@ -199,7 +201,7 @@
             lbl4AdminProgress.AutoSize = true;
             lbl4AdminProgress.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lbl4AdminProgress.ForeColor = Color.Gray;
-            lbl4AdminProgress.Location = new Point(393, 206);
+            lbl4AdminProgress.Location = new Point(393, 272);
             lbl4AdminProgress.Name = "lbl4AdminProgress";
             lbl4AdminProgress.Size = new Size(0, 17);
             lbl4AdminProgress.TabIndex = 2;
@@ -209,7 +211,7 @@
             lbl5AdminProgress.AutoSize = true;
             lbl5AdminProgress.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lbl5AdminProgress.ForeColor = Color.Gray;
-            lbl5AdminProgress.Location = new Point(393, 223);
+            lbl5AdminProgress.Location = new Point(393, 289);
             lbl5AdminProgress.Name = "lbl5AdminProgress";
             lbl5AdminProgress.Size = new Size(0, 17);
             lbl5AdminProgress.TabIndex = 2;
@@ -219,21 +221,32 @@
             lbl6AdminProgress.AutoSize = true;
             lbl6AdminProgress.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lbl6AdminProgress.ForeColor = Color.Gray;
-            lbl6AdminProgress.Location = new Point(393, 240);
+            lbl6AdminProgress.Location = new Point(393, 306);
             lbl6AdminProgress.Name = "lbl6AdminProgress";
             lbl6AdminProgress.Size = new Size(0, 17);
             lbl6AdminProgress.TabIndex = 2;
+            // 
+            // lblDesc
+            // 
+            lblDesc.AutoSize = true;
+            lblDesc.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDesc.Location = new Point(13, 71);
+            lblDesc.Name = "lblDesc";
+            lblDesc.Size = new Size(45, 17);
+            lblDesc.TabIndex = 5;
+            lblDesc.Text = "label1";
             // 
             // userTicketStatusCheck
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(884, 271);
+            ClientSize = new Size(884, 356);
+            Controls.Add(lblDesc);
             Controls.Add(btnConfirm);
             Controls.Add(lblClosed);
             Controls.Add(lblCompleted);
             Controls.Add(lblResolved);
-            Controls.Add(lblInProgress);
+            Controls.Add(onHoverTrigger);
             Controls.Add(lblOnHold);
             Controls.Add(lblAssigned);
             Controls.Add(lblOpen);
@@ -262,7 +275,7 @@
         private Label lblOpen;
         private Label lblAssigned;
         private Label lblOnHold;
-        private Label lblInProgress;
+        private Label onHoverTrigger;
         private Label lblResolved;
         private Label lblCompleted;
         private Label lblClosed;
@@ -273,5 +286,6 @@
         private Label lbl4AdminProgress;
         private Label lbl5AdminProgress;
         private Label lbl6AdminProgress;
+        private Label lblDesc;
     }
 }
