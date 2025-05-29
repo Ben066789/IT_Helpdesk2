@@ -46,6 +46,12 @@
             lbl5AdminProgress = new Label();
             lbl6AdminProgress = new Label();
             lblDesc = new Label();
+            txtLiveRemarks = new TextBox();
+            lblAdminName = new Label();
+            label1 = new Label();
+            btnPost = new Button();
+            txtLiveRemarksPrev = new TextBox();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)pbStatusBar).BeginInit();
             SuspendLayout();
             // 
@@ -61,8 +67,9 @@
             // lblTicketTitle
             // 
             lblTicketTitle.AutoSize = true;
+            lblTicketTitle.BackColor = Color.Transparent;
             lblTicketTitle.Font = new Font("Century Gothic", 18F, FontStyle.Bold);
-            lblTicketTitle.Location = new Point(8, 28);
+            lblTicketTitle.Location = new Point(12, 24);
             lblTicketTitle.Name = "lblTicketTitle";
             lblTicketTitle.Size = new Size(183, 28);
             lblTicketTitle.TabIndex = 2;
@@ -71,11 +78,12 @@
             // lblCategory
             // 
             lblCategory.AutoSize = true;
-            lblCategory.Font = new Font("Century Gothic", 9F, FontStyle.Bold);
+            lblCategory.BackColor = Color.Transparent;
+            lblCategory.Font = new Font("Century Gothic", 13F, FontStyle.Bold);
             lblCategory.ForeColor = Color.Gray;
-            lblCategory.Location = new Point(12, 54);
+            lblCategory.Location = new Point(12, 52);
             lblCategory.Name = "lblCategory";
-            lblCategory.Size = new Size(91, 16);
+            lblCategory.Size = new Size(137, 22);
             lblCategory.TabIndex = 2;
             lblCategory.Text = "category here";
             // 
@@ -229,19 +237,88 @@
             // lblDesc
             // 
             lblDesc.AutoSize = true;
-            lblDesc.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDesc.Location = new Point(13, 71);
+            lblDesc.BackColor = Color.Transparent;
+            lblDesc.Font = new Font("Century Gothic", 10F);
+            lblDesc.Location = new Point(16, 71);
             lblDesc.Name = "lblDesc";
-            lblDesc.Size = new Size(45, 17);
+            lblDesc.Size = new Size(52, 19);
             lblDesc.TabIndex = 5;
             lblDesc.Text = "label1";
+            // 
+            // txtLiveRemarks
+            // 
+            txtLiveRemarks.BorderStyle = BorderStyle.None;
+            txtLiveRemarks.Font = new Font("Segoe UI", 10F);
+            txtLiveRemarks.Location = new Point(16, 255);
+            txtLiveRemarks.Multiline = true;
+            txtLiveRemarks.Name = "txtLiveRemarks";
+            txtLiveRemarks.Size = new Size(230, 68);
+            txtLiveRemarks.TabIndex = 6;
+            // 
+            // lblAdminName
+            // 
+            lblAdminName.AutoSize = true;
+            lblAdminName.Location = new Point(167, 226);
+            lblAdminName.Name = "lblAdminName";
+            lblAdminName.Size = new Size(38, 15);
+            lblAdminName.TabIndex = 7;
+            lblAdminName.Text = "label1";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(12, 328);
+            label1.Name = "label1";
+            label1.Size = new Size(112, 21);
+            label1.TabIndex = 8;
+            label1.Text = "Extra Remarks";
+            // 
+            // btnPost
+            // 
+            btnPost.Location = new Point(171, 327);
+            btnPost.Name = "btnPost";
+            btnPost.Size = new Size(75, 23);
+            btnPost.TabIndex = 4;
+            btnPost.Text = "Post";
+            btnPost.UseVisualStyleBackColor = true;
+            btnPost.Click += btnPost_Click;
+            // 
+            // txtLiveRemarksPrev
+            // 
+            txtLiveRemarksPrev.BorderStyle = BorderStyle.None;
+            txtLiveRemarksPrev.Font = new Font("Segoe UI", 10F);
+            txtLiveRemarksPrev.Location = new Point(252, 255);
+            txtLiveRemarksPrev.Multiline = true;
+            txtLiveRemarksPrev.Name = "txtLiveRemarksPrev";
+            txtLiveRemarksPrev.ReadOnly = true;
+            txtLiveRemarksPrev.Size = new Size(230, 68);
+            txtLiveRemarksPrev.TabIndex = 6;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(252, 326);
+            label2.Name = "label2";
+            label2.Size = new Size(67, 21);
+            label2.TabIndex = 8;
+            label2.Text = "Preview";
             // 
             // userTicketStatusCheck
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(884, 356);
+            ClientSize = new Size(884, 363);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(txtLiveRemarksPrev);
+            Controls.Add(txtLiveRemarks);
+            Controls.Add(lblAdminName);
             Controls.Add(lblDesc);
+            Controls.Add(btnPost);
             Controls.Add(btnConfirm);
             Controls.Add(lblClosed);
             Controls.Add(lblCompleted);
@@ -287,5 +364,11 @@
         private Label lbl5AdminProgress;
         private Label lbl6AdminProgress;
         private Label lblDesc;
+        private TextBox txtLiveRemarks;
+        private Label lblAdminName;
+        private Label label1;
+        private Button btnPost;
+        private TextBox txtLiveRemarksPrev;
+        private Label label2;
     }
 }

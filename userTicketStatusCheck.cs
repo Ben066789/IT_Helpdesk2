@@ -18,6 +18,7 @@ namespace IT_Helpdesk
         private int ticketId;
         private int userId;
         private onHoverProgressRemarks hoverRemarksForm;
+        private onHoverResolveRemarks hoverResolveForm;
 
         public userTicketStatusCheck(int ticketId, string status, int userId)
         {
@@ -29,6 +30,9 @@ namespace IT_Helpdesk
             LoadStatusBarImage();
             onHoverTrigger.MouseEnter += onHoverTrigger_MouseEnter;
             onHoverTrigger.MouseLeave += onHoverTrigger_MouseLeave;
+
+            lblResolved.MouseEnter += lblResolved_MouseEnter;
+            lblResolved.MouseLeave += lblResolved_MouseLeave;
         }
         private string serverConnect()
         {
@@ -38,18 +42,19 @@ namespace IT_Helpdesk
         private void LoadTicketStatus()
         {
             string query = @"
-            SELECT 
-            ticket_id, 
-            title, 
-            category, 
-            priority, 
-            status, 
-            description, 
-            created_at,
-            CONCAT(a.firstname, ' ', a.lastname) AS assigned_to
-            FROM tickets t
-            LEFT JOIN accounts a ON t.assigned_to = a.userID
-            WHERE t.ticket_id = @ticketId";
+    SELECT 
+        ticket_id, 
+        title, 
+        category, 
+        priority, 
+        status, 
+        description, 
+        created_at,
+        CONCAT(a.firstname, ' ', a.lastname) AS assigned_to,
+        t.user_extra_remarks
+    FROM tickets t
+    LEFT JOIN accounts a ON t.assigned_to = a.userID
+    WHERE t.ticket_id = @ticketId";
 
             using (MySqlConnection conn = new MySqlConnection(serverConnect()))
             {
@@ -66,8 +71,25 @@ namespace IT_Helpdesk
                             lblCategory.Text = reader["category"].ToString();
                             lblDesc.Text = reader["description"].ToString();
                             this.status = reader["status"].ToString();
-                            // Optionally update status label
-                            // lblStatus.Text = this.status;
+
+                            // Set admin name
+                            string statusLower = this.status.ToLowerInvariant();
+                            if (statusLower != "open")
+                            {
+                                lblAdminName.Text = reader["assigned_to"] == DBNull.Value || string.IsNullOrWhiteSpace(reader["assigned_to"].ToString())
+                                    ? "Unassigned"
+                                    : reader["assigned_to"].ToString();
+                            }
+                            else
+                            {
+                                lblAdminName.Text = "Unassigned";
+                            }
+
+                            // Load user extra remarks
+                            txtLiveRemarksPrev.Text = reader["user_extra_remarks"] == DBNull.Value ? "" : reader["user_extra_remarks"].ToString();
+
+                            // Enable btnPost only for "On Hold" or "In Progress"
+                            btnPost.Enabled = (statusLower == "on hold" || statusLower == "in progress");
                         }
                         else
                         {
@@ -76,11 +98,8 @@ namespace IT_Helpdesk
                     }
                 }
             }
-            // Enable or disable the button after loading status
             btnConfirm.Enabled = (this.status == "Resolved");
         }
-
-
 
         private void LoadStatusBarImage()
         {
@@ -140,6 +159,7 @@ namespace IT_Helpdesk
             MessageBox.Show("Ticket marked as Completed.");
             btnConfirm.Enabled = false;
         }
+        //on Hover Trigger for remarks
         private void onHoverTrigger_MouseEnter(object sender, EventArgs e)
         {
             if (hoverRemarksForm == null || hoverRemarksForm.IsDisposed)
@@ -159,5 +179,55 @@ namespace IT_Helpdesk
                 hoverRemarksForm.Close();
             }
         }
+
+        private void lblResolved_MouseEnter(object sender, EventArgs e)
+        {
+            if (hoverResolveForm == null || hoverResolveForm.IsDisposed)
+            {
+                hoverResolveForm = new onHoverResolveRemarks(ticketId);
+                hoverResolveForm.StartPosition = FormStartPosition.Manual;
+                // Position the form next to lblResolved
+                var labelLocation = this.PointToScreen(lblResolved.Location);
+                hoverResolveForm.Location = new Point(labelLocation.X + lblResolved.Width, labelLocation.Y);
+                hoverResolveForm.Show(this);
+            }
+        }
+
+        private void lblResolved_MouseLeave(object sender, EventArgs e)
+        {
+            if (hoverResolveForm != null && !hoverResolveForm.IsDisposed)
+            {
+                hoverResolveForm.Close();
+            }
+        }
+
+
+        private void btnPost_Click(object sender, EventArgs e)
+        {
+            string userRemark = txtLiveRemarks.Text.Trim();
+            if (string.IsNullOrEmpty(userRemark))
+            {
+                MessageBox.Show("Please enter a remark before posting.");
+                return;
+            }
+
+            string updateQuery = "UPDATE tickets SET user_extra_remarks = @remark WHERE ticket_id = @ticketId";
+            using (MySqlConnection conn = new MySqlConnection(serverConnect()))
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(updateQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@remark", userRemark);
+                    cmd.Parameters.AddWithValue("@ticketId", ticketId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            // Refresh the remarks display
+            txtLiveRemarksPrev.Text = userRemark;
+            txtLiveRemarks.Clear();
+            MessageBox.Show("Remark posted.");
+        }
+
     }
 }

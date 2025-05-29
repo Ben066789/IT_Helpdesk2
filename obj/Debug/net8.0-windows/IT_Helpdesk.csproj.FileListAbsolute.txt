@@ -97,3 +97,4 @@ C:\Users\User\source\repos\IT_Helpdesk\bin\Debug\net8.0-windows\progressTracker_
 C:\Users\User\source\repos\IT_Helpdesk\bin\Debug\net8.0-windows\progressTracker_ITHelpdesk\Open.png
 C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.AdminTicketManager.resources
 C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.onHoverProgressRemarks.resources
+C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.onHoverResolveRemarks.resources

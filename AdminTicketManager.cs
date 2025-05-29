@@ -23,6 +23,8 @@ namespace IT_Helpdesk
         public AdminTicketManager(int ticketId, int userId)
         {
             InitializeComponent();
+            pnlResolvedRemarksPrev.Visible = false;
+            btnShowHideResolved.Text = "Show";
             LoadAdmins();
             this.ticketId = ticketId;
             this.userId = userId;
@@ -34,6 +36,7 @@ namespace IT_Helpdesk
             btnCancelReassign.Click += (s, e) => pnlReassignBG.Visible = false;
             btnAcceptTicket.Click += btnAcceptTicket_Click;
             cmbStatus.SelectedIndexChanged += cmbStatus_SelectedIndexChanged;
+            btnShowHideResolved.Click += btnShowHideResolved_Click;
             LoadTicketInfo();
         }
 
@@ -120,7 +123,16 @@ namespace IT_Helpdesk
 
                         txtDescription.Text = reader["description"].ToString();
                         cmbStatus.SelectedItem = reader["status"].ToString();
+
                         SetStatusUpdaterUI(reader["status"].ToString());
+                        if (reader["user_extra_remarks"] != DBNull.Value)
+                            txtExtraRemarks.Text = reader["user_extra_remarks"].ToString();
+                        else
+                            txtExtraRemarks.Text = "";
+
+                        string status = reader["status"].ToString();
+                        closeTicketButton.Enabled = status.Equals("completed", StringComparison.OrdinalIgnoreCase);
+
                     }
                 }
                 catch (Exception ex)
@@ -128,6 +140,8 @@ namespace IT_Helpdesk
                     MessageBox.Show("Error loading ticket info: " + ex.Message);
                 }
             }
+            LoadProgressRemarks();
+            LoadResolvedRemarks();
         }
 
         private void btnAcceptTicket_Click(object sender, EventArgs e)
@@ -263,6 +277,115 @@ namespace IT_Helpdesk
 
             MessageBox.Show("Progress remark posted.");
             txtProgRemarks.Clear();
+            LoadTicketInfo();
+        }
+
+        private void btnResolvePost_Click(object sender, EventArgs e)
+        {
+            string resolveRemark = txtResolveRemarks.Text.Trim();
+            if (string.IsNullOrEmpty(resolveRemark))
+            {
+                MessageBox.Show("Please enter a resolve remark before posting.");
+                return;
+            }
+
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string updateQuery = "UPDATE tickets SET resolve_remarks = @remark, status = 'Resolved' WHERE ticket_id = @ticketId";
+                using (var cmd = new MySqlCommand(updateQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@remark", resolveRemark);
+                    cmd.Parameters.AddWithValue("@ticketId", ticketId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            MessageBox.Show("Resolve remark posted and ticket marked as Resolved.");
+            txtResolveRemarks.Clear();
+            LoadTicketInfo();
+        }
+
+        private void LoadProgressRemarks()
+        {
+            string query = "SELECT * FROM ticket_progress_remarks WHERE ticket_id = @ticketId";
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ticketId", ticketId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            for (int i = 1; i <= 6; i++)
+                            {
+                                var txtRemark = Controls.Find($"txtRemark{i}", true).FirstOrDefault() as TextBox;
+                                var timeDate = Controls.Find($"timeDate{i}", true).FirstOrDefault() as Label;
+                                string remark = reader[$"remark{i}"] == DBNull.Value ? "" : reader[$"remark{i}"].ToString();
+                                string dateCol = $"remark{i}_created_at";
+                                string dateText = reader[dateCol] != DBNull.Value
+                                    ? Convert.ToDateTime(reader[dateCol]).ToString("g")
+                                    : "";
+                                if (txtRemark != null) txtRemark.Text = remark;
+                                if (timeDate != null) timeDate.Text = dateText;
+                            }
+                        }
+                        else
+                        {
+                            for (int i = 1; i <= 6; i++)
+                            {
+                                var txtRemark = Controls.Find($"txtRemark{i}", true).FirstOrDefault() as TextBox;
+                                var timeDate = Controls.Find($"timeDate{i}", true).FirstOrDefault() as Label;
+                                if (txtRemark != null) txtRemark.Text = "";
+                                if (timeDate != null) timeDate.Text = "";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void LoadResolvedRemarks()
+        {
+            string query = "SELECT resolve_remarks FROM tickets WHERE ticket_id = @ticketId";
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ticketId", ticketId);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            textBox1.Text = reader["resolve_remarks"] == DBNull.Value ? "" : reader["resolve_remarks"].ToString();
+                        }
+                        else
+                        {
+                            textBox1.Text = "";
+                        }
+                    }
+                }
+            }
+        }
+        private void btnShowHideResolved_Click(object sender, EventArgs e)
+        {
+            pnlResolvedRemarksPrev.Visible = !pnlResolvedRemarksPrev.Visible;
+            btnShowHideResolved.Text = pnlResolvedRemarksPrev.Visible ? "Hide" : "Show";
+        }
+
+        private void closeTicketButton_Click(object sender, EventArgs e)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string update = "UPDATE tickets SET status = 'closed', completed_at = NOW() WHERE ticket_id = @ticketId";
+                var cmd = new MySqlCommand(update, conn);
+                cmd.Parameters.AddWithValue("@ticketId", ticketId);
+                cmd.ExecuteNonQuery();
+            }
+            MessageBox.Show("Ticket closed.");
             LoadTicketInfo();
         }
     }
