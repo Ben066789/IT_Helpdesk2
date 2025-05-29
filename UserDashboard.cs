@@ -67,6 +67,7 @@ namespace IT_Helpdesk
         {
             if (dataGridView1.Columns[e.ColumnIndex].Name == "status" && e.Value != null)
             {
+                e.CellStyle.Font = new Font(dataGridView1.DefaultCellStyle.Font, FontStyle.Bold);
                 string status = e.Value.ToString().Trim();
                 switch (status)
                 {
@@ -96,7 +97,28 @@ namespace IT_Helpdesk
                         break;
                 }
             }
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "priority" && e.Value != null)
+            {
+                e.CellStyle.Font = new Font(dataGridView1.DefaultCellStyle.Font, FontStyle.Bold);
+                string priority = e.Value.ToString().Trim().ToLower();
+                switch (priority)
+                {
+                    case "high":
+                        e.CellStyle.ForeColor = Color.Red;
+                        break;
+                    case "medium":
+                        e.CellStyle.ForeColor = Color.Goldenrod;
+                        break;
+                    case "low":
+                        e.CellStyle.ForeColor = Color.Blue;
+                        break;
+                    default:
+                        e.CellStyle.ForeColor = dataGridView1.DefaultCellStyle.ForeColor;
+                        break;
+                }
+            }
         }
+
 
         private void LoadTickets()
         {

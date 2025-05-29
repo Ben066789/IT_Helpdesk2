@@ -92,7 +92,7 @@ namespace IT_Helpdesk
                         }
                     }
 
-                    MessageBox.Show("Ticket submitted and assigned to: " + assignedAdminName);
+                    MessageBox.Show("Ticket successfully submitted");
                     this.Close();
                 }
                 catch (Exception ex)

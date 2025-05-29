@@ -26,6 +26,8 @@ namespace IT_Helpdesk
             historyDataGridViewStyling();
             cmbStatus.SelectedIndexChanged += cmbStatus_SelectedIndexChanged;
             adminDataGridView.CellClick += adminDataGridView_CellClick;
+            adminDataGridView.CellFormatting += DataGridView_CellFormatting;
+            historyDataGridView.CellFormatting += DataGridView_CellFormatting;
         }// Constructor receives the logged-in username
 
         private string serverConnect()
@@ -77,6 +79,30 @@ namespace IT_Helpdesk
             }
         }//loads datagrid
 
+        private void DataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            var dgv = sender as DataGridView;
+            if (dgv.Columns[e.ColumnIndex].Name == "status" && e.Value != null)
+            {
+                e.CellStyle.Font = new Font(dgv.DefaultCellStyle.Font, FontStyle.Bold);
+                string status = e.Value.ToString().ToLower();
+                // Color indicator for status
+                if (status == "in progress") e.CellStyle.ForeColor = Color.Orange;
+                else if (status == "resolved") e.CellStyle.ForeColor = Color.Green;
+                else if (status == "closed") e.CellStyle.ForeColor = Color.Gray;
+                else e.CellStyle.ForeColor = Color.Black;
+            }
+            if (dgv.Columns[e.ColumnIndex].Name == "priority" && e.Value != null)
+            {
+                e.CellStyle.Font = new Font(dgv.DefaultCellStyle.Font, FontStyle.Bold);
+                string priority = e.Value.ToString().ToLower();
+                // Color indicator for priority
+                if (priority == "high") e.CellStyle.ForeColor = Color.Red;
+                else if (priority == "medium") e.CellStyle.ForeColor = Color.Goldenrod;
+                else if (priority == "low") e.CellStyle.ForeColor = Color.Blue;
+                else e.CellStyle.ForeColor = Color.Black;
+            }
+        }
 
         private void adminDataGridViewStyling()
         {
