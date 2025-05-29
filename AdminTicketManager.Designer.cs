@@ -121,7 +121,7 @@
             pnlReassignBG.Controls.Add(btnReassign);
             pnlReassignBG.Controls.Add(lblReassign);
             pnlReassignBG.Controls.Add(comboBoxAdmins);
-            pnlReassignBG.Location = new Point(12, 12);
+            pnlReassignBG.Location = new Point(12, 13);
             pnlReassignBG.Name = "pnlReassignBG";
             pnlReassignBG.Size = new Size(265, 220);
             pnlReassignBG.TabIndex = 3;
@@ -199,7 +199,7 @@
             lblPriorityLbl.BackColor = Color.Transparent;
             lblPriorityLbl.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblPriorityLbl.ForeColor = SystemColors.ControlDarkDark;
-            lblPriorityLbl.Location = new Point(197, 45);
+            lblPriorityLbl.Location = new Point(197, 37);
             lblPriorityLbl.Name = "lblPriorityLbl";
             lblPriorityLbl.Size = new Size(57, 20);
             lblPriorityLbl.TabIndex = 0;
@@ -241,11 +241,11 @@
             // lblPriority
             // 
             lblPriority.AutoSize = true;
-            lblPriority.Font = new Font("Century Gothic", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblPriority.Location = new Point(179, 18);
+            lblPriority.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
+            lblPriority.Location = new Point(195, 18);
             lblPriority.Name = "lblPriority";
             lblPriority.RightToLeft = RightToLeft.Yes;
-            lblPriority.Size = new Size(74, 23);
+            lblPriority.Size = new Size(59, 19);
             lblPriority.TabIndex = 0;
             lblPriority.Text = "Priority";
             lblPriority.TextAlign = ContentAlignment.TopRight;
@@ -253,10 +253,10 @@
             // lblTicketTitle
             // 
             lblTicketTitle.AutoSize = true;
-            lblTicketTitle.Font = new Font("Century Gothic", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTicketTitle.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             lblTicketTitle.Location = new Point(10, 18);
             lblTicketTitle.Name = "lblTicketTitle";
-            lblTicketTitle.Size = new Size(110, 23);
+            lblTicketTitle.Size = new Size(86, 19);
             lblTicketTitle.TabIndex = 0;
             lblTicketTitle.Text = "Ticket Title";
             // 
@@ -665,6 +665,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.IT_HelpdeskBG1;
             ClientSize = new Size(806, 505);
             Controls.Add(closeTicketButton);
             Controls.Add(pngExtraRemarks);
@@ -674,7 +675,7 @@
             Controls.Add(pnlProgressUpdater);
             Controls.Add(pnlTicketInfo);
             Name = "AdminTicketManager";
-            Text = "Reassign Form";
+            Text = "Ticket Manager";
             pnlReassignBG.ResumeLayout(false);
             pnlReassignBG.PerformLayout();
             pnlTicketInfo.ResumeLayout(false);

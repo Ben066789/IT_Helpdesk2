@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(userTicketStatusCheck));
             pbStatusBar = new PictureBox();
             lblTicketTitle = new Label();
             lblCategory = new Label();
@@ -295,6 +296,7 @@
             txtLiveRemarksPrev.ReadOnly = true;
             txtLiveRemarksPrev.Size = new Size(230, 68);
             txtLiveRemarksPrev.TabIndex = 6;
+            txtLiveRemarksPrev.TabStop = false;
             // 
             // label2
             // 
@@ -311,6 +313,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(884, 363);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -336,6 +340,7 @@
             Controls.Add(lblCategory);
             Controls.Add(lblTicketTitle);
             Controls.Add(pbStatusBar);
+            DoubleBuffered = true;
             ForeColor = Color.FromArgb(64, 64, 64);
             Name = "userTicketStatusCheck";
             Text = "Ticket Status";
