@@ -375,6 +375,49 @@ namespace IT_Helpdesk
             btnShowHideResolved.Text = pnlResolvedRemarksPrev.Visible ? "Hide" : "Show";
         }
 
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            // Clear the text boxes
+            for (int i = 1; i <= 6; i++)
+            {
+                var txtRemark = Controls.Find($"txtRemark{i}", true).FirstOrDefault() as TextBox;
+                if (txtRemark != null)
+                {
+                    txtRemark.Clear();
+                }
+                var timeDate = Controls.Find($"timeDate{i}", true).FirstOrDefault() as Label;
+                if (timeDate != null)
+                {
+                    timeDate.Text = "";
+                }
+            }
+
+            // Clear the remarks in the database
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string updateQuery = @"
+            UPDATE ticket_progress_remarks
+            SET
+                remark1 = NULL, remark1_created_at = NULL,
+                remark2 = NULL, remark2_created_at = NULL,
+                remark3 = NULL, remark3_created_at = NULL,
+                remark4 = NULL, remark4_created_at = NULL,
+                remark5 = NULL, remark5_created_at = NULL,
+                remark6 = NULL, remark6_created_at = NULL
+            WHERE ticket_id = @ticketId AND user_id = @userId";
+                using (var cmd = new MySqlCommand(updateQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ticketId", ticketId);
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            MessageBox.Show("All progress remarks have been cleared.");
+        }
+
+
         /*private void closeTicketButton_Click(object sender, EventArgs e)
         {
             using (var conn = new MySqlConnection(connectionString))

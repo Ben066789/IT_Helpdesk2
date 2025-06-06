@@ -83,6 +83,7 @@
             pngExtraRemarks = new Panel();
             txtExtraRemarks = new TextBox();
             label7 = new Label();
+            btnClear = new Button();
             pnlReassignBG.SuspendLayout();
             pnlTicketInfo.SuspendLayout();
             pnlProgressUpdater.SuspendLayout();
@@ -389,6 +390,7 @@
             // pnlProgressRemarksPrev
             // 
             pnlProgressRemarksPrev.BackColor = Color.LightSteelBlue;
+            pnlProgressRemarksPrev.Controls.Add(btnClear);
             pnlProgressRemarksPrev.Controls.Add(label1);
             pnlProgressRemarksPrev.Controls.Add(lbInProgRemarksPrev);
             pnlProgressRemarksPrev.Controls.Add(timeDate6);
@@ -414,7 +416,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ControlDarkDark;
-            label1.Location = new Point(14, 32);
+            label1.Location = new Point(14, 25);
             label1.Name = "label1";
             label1.RightToLeft = RightToLeft.Yes;
             label1.Size = new Size(56, 17);
@@ -426,7 +428,7 @@
             // 
             lbInProgRemarksPrev.AutoSize = true;
             lbInProgRemarksPrev.Font = new Font("Century Gothic", 11F, FontStyle.Bold);
-            lbInProgRemarksPrev.Location = new Point(13, 16);
+            lbInProgRemarksPrev.Location = new Point(13, 9);
             lbInProgRemarksPrev.Name = "lbInProgRemarksPrev";
             lbInProgRemarksPrev.RightToLeft = RightToLeft.Yes;
             lbInProgRemarksPrev.Size = new Size(152, 18);
@@ -439,7 +441,7 @@
             timeDate6.AutoSize = true;
             timeDate6.BackColor = Color.Transparent;
             timeDate6.ForeColor = Color.DimGray;
-            timeDate6.Location = new Point(179, 404);
+            timeDate6.Location = new Point(178, 390);
             timeDate6.Name = "timeDate6";
             timeDate6.Size = new Size(38, 15);
             timeDate6.TabIndex = 8;
@@ -450,7 +452,7 @@
             timeDate5.AutoSize = true;
             timeDate5.BackColor = Color.Transparent;
             timeDate5.ForeColor = Color.DimGray;
-            timeDate5.Location = new Point(179, 342);
+            timeDate5.Location = new Point(178, 328);
             timeDate5.Name = "timeDate5";
             timeDate5.Size = new Size(38, 15);
             timeDate5.TabIndex = 9;
@@ -461,7 +463,7 @@
             timeDate4.AutoSize = true;
             timeDate4.BackColor = Color.Transparent;
             timeDate4.ForeColor = Color.DimGray;
-            timeDate4.Location = new Point(179, 282);
+            timeDate4.Location = new Point(178, 268);
             timeDate4.Name = "timeDate4";
             timeDate4.Size = new Size(38, 15);
             timeDate4.TabIndex = 10;
@@ -472,7 +474,7 @@
             timeDate3.AutoSize = true;
             timeDate3.BackColor = Color.Transparent;
             timeDate3.ForeColor = Color.DimGray;
-            timeDate3.Location = new Point(179, 222);
+            timeDate3.Location = new Point(178, 208);
             timeDate3.Name = "timeDate3";
             timeDate3.Size = new Size(38, 15);
             timeDate3.TabIndex = 11;
@@ -483,7 +485,7 @@
             timeDate2.AutoSize = true;
             timeDate2.BackColor = Color.Transparent;
             timeDate2.ForeColor = Color.DimGray;
-            timeDate2.Location = new Point(179, 162);
+            timeDate2.Location = new Point(178, 148);
             timeDate2.Name = "timeDate2";
             timeDate2.Size = new Size(38, 15);
             timeDate2.TabIndex = 12;
@@ -494,7 +496,7 @@
             timeDate1.AutoSize = true;
             timeDate1.BackColor = Color.Transparent;
             timeDate1.ForeColor = Color.DimGray;
-            timeDate1.Location = new Point(179, 101);
+            timeDate1.Location = new Point(178, 87);
             timeDate1.Name = "timeDate1";
             timeDate1.Size = new Size(38, 15);
             timeDate1.TabIndex = 13;
@@ -505,7 +507,7 @@
             txtRemark6.BackColor = SystemColors.Control;
             txtRemark6.BorderStyle = BorderStyle.None;
             txtRemark6.Font = new Font("Segoe UI", 12F);
-            txtRemark6.Location = new Point(15, 362);
+            txtRemark6.Location = new Point(14, 348);
             txtRemark6.Multiline = true;
             txtRemark6.Name = "txtRemark6";
             txtRemark6.ReadOnly = true;
@@ -518,7 +520,7 @@
             txtRemark5.BackColor = SystemColors.Control;
             txtRemark5.BorderStyle = BorderStyle.None;
             txtRemark5.Font = new Font("Segoe UI", 12F);
-            txtRemark5.Location = new Point(15, 300);
+            txtRemark5.Location = new Point(14, 286);
             txtRemark5.Multiline = true;
             txtRemark5.Name = "txtRemark5";
             txtRemark5.ReadOnly = true;
@@ -531,7 +533,7 @@
             txtRemark4.BackColor = SystemColors.Control;
             txtRemark4.BorderStyle = BorderStyle.None;
             txtRemark4.Font = new Font("Segoe UI", 12F);
-            txtRemark4.Location = new Point(15, 240);
+            txtRemark4.Location = new Point(14, 226);
             txtRemark4.Multiline = true;
             txtRemark4.Name = "txtRemark4";
             txtRemark4.ReadOnly = true;
@@ -544,7 +546,7 @@
             txtRemark3.BackColor = SystemColors.Control;
             txtRemark3.BorderStyle = BorderStyle.None;
             txtRemark3.Font = new Font("Segoe UI", 12F);
-            txtRemark3.Location = new Point(15, 181);
+            txtRemark3.Location = new Point(14, 167);
             txtRemark3.Multiline = true;
             txtRemark3.Name = "txtRemark3";
             txtRemark3.ReadOnly = true;
@@ -557,7 +559,7 @@
             txtRemark2.BackColor = SystemColors.Control;
             txtRemark2.BorderStyle = BorderStyle.None;
             txtRemark2.Font = new Font("Segoe UI", 12F);
-            txtRemark2.Location = new Point(15, 120);
+            txtRemark2.Location = new Point(14, 106);
             txtRemark2.Multiline = true;
             txtRemark2.Name = "txtRemark2";
             txtRemark2.ReadOnly = true;
@@ -570,7 +572,7 @@
             txtRemark1.BackColor = SystemColors.Control;
             txtRemark1.BorderStyle = BorderStyle.None;
             txtRemark1.Font = new Font("Segoe UI", 12F);
-            txtRemark1.Location = new Point(15, 59);
+            txtRemark1.Location = new Point(14, 45);
             txtRemark1.Multiline = true;
             txtRemark1.Name = "txtRemark1";
             txtRemark1.ReadOnly = true;
@@ -583,7 +585,7 @@
             pnlResolvedRemarksPrev.Controls.Add(label6);
             pnlResolvedRemarksPrev.Controls.Add(textBox1);
             pnlResolvedRemarksPrev.Controls.Add(label5);
-            pnlResolvedRemarksPrev.Location = new Point(561, 252);
+            pnlResolvedRemarksPrev.Location = new Point(561, 249);
             pnlResolvedRemarksPrev.Name = "pnlResolvedRemarksPrev";
             pnlResolvedRemarksPrev.Size = new Size(232, 200);
             pnlResolvedRemarksPrev.TabIndex = 7;
@@ -655,6 +657,16 @@
             label7.TabIndex = 0;
             label7.Text = "Extra Remarks";
             label7.TextAlign = ContentAlignment.TopRight;
+            // 
+            // btnClear
+            // 
+            btnClear.Location = new Point(14, 400);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(75, 23);
+            btnClear.TabIndex = 14;
+            btnClear.Text = "Clear";
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // AdminTicketManager
             // 
@@ -736,5 +748,6 @@
         private Panel pngExtraRemarks;
         private Label label7;
         private TextBox txtExtraRemarks;
+        private Button btnClear;
     }
 }

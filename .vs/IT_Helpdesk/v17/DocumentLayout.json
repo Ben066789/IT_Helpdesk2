@@ -11,6 +11,10 @@
       "RelativeMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|solutionrelative:admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|c:\\users\\user\\source\\repos\\it_helpdesk\\adminticketmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|solutionrelative:adminticketmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|c:\\users\\user\\source\\repos\\it_helpdesk\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -22,21 +26,8 @@
       "DocumentGroups": [
         {
           "DockedHeight": 237,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AdminDashboard.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminDashboard.cs",
-              "RelativeDocumentMoniker": "AdminDashboard.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminDashboard.cs",
-              "RelativeToolTip": "AdminDashboard.cs",
-              "ViewState": "AgIAAMIBAAAAAAAAAAAxwI0AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-06T10:12:56.187Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{2d7728c2-de0a-45b5-99aa-89b609dfde73}"
@@ -55,20 +46,45 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AdminTicketManager.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminTicketManager.cs",
+              "RelativeDocumentMoniker": "AdminTicketManager.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminTicketManager.cs [Design]",
+              "RelativeToolTip": "AdminTicketManager.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-06T11:37:41.885Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdminDashboard.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminDashboard.cs",
+              "RelativeDocumentMoniker": "AdminDashboard.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminDashboard.cs",
+              "RelativeToolTip": "AdminDashboard.cs",
+              "ViewState": "AgIAAJYBAAAAAAAAAAAqwI0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-06T10:12:56.187Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "AdminTicketManager.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminTicketManager.cs",
               "RelativeDocumentMoniker": "AdminTicketManager.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminTicketManager.cs",
               "RelativeToolTip": "AdminTicketManager.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAIwIABAABDAAAAAAAAAA==",
+              "ViewState": "AgIAAIEBAAAAAAAAAAAAwKIBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-06T09:14:13.442Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Login.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\Login.cs",
               "RelativeDocumentMoniker": "Login.cs",
@@ -76,7 +92,8 @@
               "RelativeToolTip": "Login.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T12:27:23.812Z"
+              "WhenOpened": "2025-05-29T12:27:23.812Z",
+              "EditorCaption": ""
             }
           ]
         }
