@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|solutionrelative:admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|c:\\users\\user\\source\\repos\\it_helpdesk\\adminticketmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|C:\\Users\\User\\source\\repos\\IT_Helpdesk\\adminticketmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{E6D0ADD8-5E0C-4E98-A369-7F9B05F6657E}|IT_Helpdesk.csproj|solutionrelative:adminticketmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -50,8 +50,8 @@
               "Title": "AdminTicketManager.cs [Design]",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminTicketManager.cs",
               "RelativeDocumentMoniker": "AdminTicketManager.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminTicketManager.cs [Design]",
-              "RelativeToolTip": "AdminTicketManager.cs [Design]",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminTicketManager.cs [Design]*",
+              "RelativeToolTip": "AdminTicketManager.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-06T11:37:41.885Z",
               "EditorCaption": " [Design]"
@@ -75,9 +75,9 @@
               "Title": "AdminTicketManager.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminTicketManager.cs",
               "RelativeDocumentMoniker": "AdminTicketManager.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminTicketManager.cs",
-              "RelativeToolTip": "AdminTicketManager.cs",
-              "ViewState": "AgIAAMkAAAAAAAAAAAAowKIBAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\IT_Helpdesk\\AdminTicketManager.cs*",
+              "RelativeToolTip": "AdminTicketManager.cs*",
+              "ViewState": "AgIAADgAAAAAAAAAAAAAAEsAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-06T09:14:13.442Z",
               "EditorCaption": ""
@@ -92,8 +92,7 @@
               "RelativeToolTip": "Login.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T12:27:23.812Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-29T12:27:23.812Z"
             }
           ]
         }

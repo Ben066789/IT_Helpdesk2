@@ -58,7 +58,7 @@ namespace IT_Helpdesk
 
         private void reassignBtn_Click(object sender, EventArgs e)
         {
-            if (comboBoxAdmins.SelectedIndex == -1)
+            if (comboBoxAdmins.SelectedValue == null || string.IsNullOrWhiteSpace(comboBoxAdmins.SelectedValue.ToString()))
             {
                 MessageBox.Show("Please select an admin to reassign the ticket to.");
                 return;
@@ -72,16 +72,17 @@ namespace IT_Helpdesk
 
             string updateQuery = "UPDATE tickets SET assigned_to = @newAdminId, note = @newDescription WHERE ticket_id = @ticketId AND status != 'closed'";
 
+
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 try
                 {
                     conn.Open();
                     MySqlCommand cmd = new MySqlCommand(updateQuery, conn);
+                    string SelectedAdminId = comboBoxAdmins.SelectedValue.ToString();
                     cmd.Parameters.AddWithValue("@newAdminId", SelectedAdminId);
                     cmd.Parameters.AddWithValue("@newDescription", NewDescription);
                     cmd.Parameters.AddWithValue("@ticketId", ticketId);
-
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected > 0)
                     {
