@@ -9,6 +9,44 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="progressTracker_ITHelpdesk\Assigned.png" />
+    <None Remove="progressTracker_ITHelpdesk\Completed.png" />
+    <None Remove="progressTracker_ITHelpdesk\default.png" />
+    <None Remove="progressTracker_ITHelpdesk\In Progress.png" />
+    <None Remove="progressTracker_ITHelpdesk\On Hold.png" />
+    <None Remove="progressTracker_ITHelpdesk\Opened.png" />
+    <None Remove="progressTracker_ITHelpdesk\Resolved.png" />
+    <None Remove="progressTracker_ITHelpdesk\testLogisticSize.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="progressTracker_ITHelpdesk\Assigned.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="progressTracker_ITHelpdesk\Completed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="progressTracker_ITHelpdesk\default.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="progressTracker_ITHelpdesk\In Progress.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="progressTracker_ITHelpdesk\On Hold.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="progressTracker_ITHelpdesk\Opened.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="progressTracker_ITHelpdesk\Resolved.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="progressTracker_ITHelpdesk\testLogisticSize.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
     <PackageReference Include="MySql.Data" Version="9.3.0" />
   </ItemGroup>
@@ -29,28 +67,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="progressTracker_ITHelpdesk\Assigned.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="progressTracker_ITHelpdesk\Closed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="progressTracker_ITHelpdesk\Completed.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="progressTracker_ITHelpdesk\In Progress.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="progressTracker_ITHelpdesk\On Hold.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="progressTracker_ITHelpdesk\Open.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="progressTracker_ITHelpdesk\Resolved.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="progressTracker_ITHelpdesk\testLogisticSize.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

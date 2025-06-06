@@ -1,4 +1,10 @@
 ﻿namespace IT_Helpdesk
+// No direct type usage for userId is typical in designer files.
+// If you have any event handler or instantiation that passes userId, ensure the parameter is now string instead of int.
+// For example, if you see:
+// this.someButton.Click += new System.EventHandler(this.SomeHandler);
+// And SomeHandler expects (int userId), change it to (string userId).
+// Otherwise, no changes are needed here.
 {
     partial class AdminTicketManager
     {
@@ -77,7 +83,6 @@
             pngExtraRemarks = new Panel();
             txtExtraRemarks = new TextBox();
             label7 = new Label();
-            closeTicketButton = new Button();
             pnlReassignBG.SuspendLayout();
             pnlTicketInfo.SuspendLayout();
             pnlProgressUpdater.SuspendLayout();
@@ -651,23 +656,12 @@
             label7.Text = "Extra Remarks";
             label7.TextAlign = ContentAlignment.TopRight;
             // 
-            // closeTicketButton
-            // 
-            closeTicketButton.Location = new Point(687, 458);
-            closeTicketButton.Name = "closeTicketButton";
-            closeTicketButton.Size = new Size(106, 35);
-            closeTicketButton.TabIndex = 9;
-            closeTicketButton.Text = "Close Ticket";
-            closeTicketButton.UseVisualStyleBackColor = true;
-            closeTicketButton.Click += closeTicketButton_Click;
-            // 
             // AdminTicketManager
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.IT_HelpdeskBG1;
-            ClientSize = new Size(806, 505);
-            Controls.Add(closeTicketButton);
+            ClientSize = new Size(806, 463);
             Controls.Add(pngExtraRemarks);
             Controls.Add(pnlResolvedRemarksPrev);
             Controls.Add(pnlProgressRemarksPrev);
@@ -742,6 +736,5 @@
         private Panel pngExtraRemarks;
         private Label label7;
         private TextBox txtExtraRemarks;
-        private Button closeTicketButton;
     }
 }

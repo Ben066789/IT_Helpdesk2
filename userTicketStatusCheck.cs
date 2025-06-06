@@ -16,16 +16,16 @@ namespace IT_Helpdesk
     {
         private string status;
         private int ticketId;
-        private int userId;
+        private string userId; // CHANGED from int to string
         private onHoverProgressRemarks hoverRemarksForm;
         private onHoverResolveRemarks hoverResolveForm;
 
-        public userTicketStatusCheck(int ticketId, string status, int userId)
+        public userTicketStatusCheck(int ticketId, string status, string userId) // CHANGED userId to string
         {
             InitializeComponent();
             this.ticketId = ticketId;
             this.status = status;
-            this.userId = userId;
+            this.userId = userId; // assignment remains
             LoadTicketStatus();
             LoadStatusBarImage();
             onHoverTrigger.MouseEnter += onHoverTrigger_MouseEnter;
@@ -104,6 +104,7 @@ namespace IT_Helpdesk
         private void LoadStatusBarImage()
         {
             string imagePath = GetStatusImagePath(status);
+            //MessageBox.Show($"Status: '{status}'\nPath: {imagePath}\nExists: {File.Exists(imagePath)}");
             if (File.Exists(imagePath))
             {
                 pbStatusBar.Image = Image.FromFile(imagePath);
@@ -111,6 +112,7 @@ namespace IT_Helpdesk
             else
             {
                 MessageBox.Show("Image not found for status: " + status);
+                pbStatusBar.Image = Image.FromFile(Path.Combine(Application.StartupPath, "progressTracker_ITHelpdesk", "default.png")); // Default image if not found
             }
         }
 
@@ -119,7 +121,7 @@ namespace IT_Helpdesk
             switch (status)
             {
                 case "Open":
-                    return Path.Combine(Application.StartupPath, "progressTracker_ITHelpdesk", "Open.png"); //ticket has been made
+                    return Path.Combine(Application.StartupPath, "progressTracker_ITHelpdesk", "Opened.png"); //ticket has been made
                 case "Assigned":
                     return Path.Combine(Application.StartupPath, "progressTracker_ITHelpdesk", "Assigned.png"); //ticket has been assigned to an admin
                 case "On Hold":
@@ -130,8 +132,6 @@ namespace IT_Helpdesk
                     return Path.Combine(Application.StartupPath, "progressTracker_ITHelpdesk", "Resolved.png"); //ticket has been resolved by an admin
                 case "Completed":
                     return Path.Combine(Application.StartupPath, "progressTracker_ITHelpdesk", "Completed.png"); //ticket has been confirmed as resolved by the user
-                case "Closed":
-                    return Path.Combine(Application.StartupPath, "progressTracker_ITHelpdesk", "Default.png"); //idk
                 default:
                     return Path.Combine(Application.StartupPath, "progressTracker_ITHelpdesk", "default.png");
             }
@@ -139,7 +139,7 @@ namespace IT_Helpdesk
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            string updateQuery = "UPDATE tickets SET status = 'Completed' WHERE ticket_id = @ticketId";
+            string updateQuery = "UPDATE tickets SET status = 'Closed' WHERE ticket_id = @ticketId";
             using (MySqlConnection conn = new MySqlConnection(serverConnect()))
             {
                 conn.Open();
@@ -164,7 +164,10 @@ namespace IT_Helpdesk
         {
             if (hoverRemarksForm == null || hoverRemarksForm.IsDisposed)
             {
-                hoverRemarksForm = new onHoverProgressRemarks(ticketId, userId); // Pass ticketId if needed
+                // Parse userId to int for onHoverProgressRemarks constructor
+                int parsedUserId = 0;
+                int.TryParse(userId, out parsedUserId);
+                hoverRemarksForm = new onHoverProgressRemarks(ticketId, parsedUserId);
                 hoverRemarksForm.StartPosition = FormStartPosition.Manual;
                 // Position the form next to the panel
                 var panelLocation = this.PointToScreen(onHoverTrigger.Location);
@@ -228,6 +231,5 @@ namespace IT_Helpdesk
             txtLiveRemarks.Clear();
             MessageBox.Show("Remark posted.");
         }
-
     }
 }

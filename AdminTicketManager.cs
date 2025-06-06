@@ -14,20 +14,20 @@ namespace IT_Helpdesk
     public partial class AdminTicketManager : Form
     {
         private int ticketId;
-        private int userId;
+        private string userId; // CHANGED from int to string
         private string connectionString = "Server=127.0.0.1; Database=company_helpdesk; User ID=root; Password=;";
 
         public string NewDescription => txtDescription.Text.Trim();
         public int SelectedAdminId => Convert.ToInt32(comboBoxAdmins.SelectedValue);
 
-        public AdminTicketManager(int ticketId, int userId)
+        public AdminTicketManager(int ticketId, string userId) // CHANGED from int to string
         {
             InitializeComponent();
             pnlResolvedRemarksPrev.Visible = false;
             btnShowHideResolved.Text = "Show";
             LoadAdmins();
             this.ticketId = ticketId;
-            this.userId = userId;
+            this.userId = userId; // assignment remains
             this.AutoScaleMode = AutoScaleMode.Dpi;
             this.Text = "Reassign Form";
             pnlReassignBG.Visible = false;
@@ -131,7 +131,7 @@ namespace IT_Helpdesk
                             txtExtraRemarks.Text = "";
 
                         string status = reader["status"].ToString();
-                        closeTicketButton.Enabled = status.Equals("completed", StringComparison.OrdinalIgnoreCase);
+                        //closeTicketButton.Enabled = status.Equals("completed", StringComparison.OrdinalIgnoreCase);
 
                     }
                 }
@@ -375,7 +375,7 @@ namespace IT_Helpdesk
             btnShowHideResolved.Text = pnlResolvedRemarksPrev.Visible ? "Hide" : "Show";
         }
 
-        private void closeTicketButton_Click(object sender, EventArgs e)
+        /*private void closeTicketButton_Click(object sender, EventArgs e)
         {
             using (var conn = new MySqlConnection(connectionString))
             {
@@ -387,6 +387,6 @@ namespace IT_Helpdesk
             }
             MessageBox.Show("Ticket closed.");
             LoadTicketInfo();
-        }
+        }*/
     }
 }

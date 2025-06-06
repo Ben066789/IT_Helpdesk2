@@ -25,8 +25,6 @@ namespace IT_Helpdesk
         }
         private void LoadRoles()
         {
-            roleCmb.Items.Add("admin");
-            roleCmb.Items.Add("user");
             roleCmb.SelectedIndex = 0;  // Set default selection (Admin)
         }
 
@@ -96,28 +94,45 @@ namespace IT_Helpdesk
             string lastName = lastNameCreate.Text.Trim();
             string userName = userNameCreate.Text.Trim();
             string password = passwordCreate.Text.Trim();
-            string role = roleCmb.SelectedItem.ToString().ToLower(); // Ensure case-insensitive insert
+            string role = roleCmb.SelectedItem.ToString().ToLower();
 
-            // Check if any required fields are empty
-            if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName) ||
+                string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Please fill in all fields.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // SQL query to insert the account
-            string query = "INSERT INTO accounts (firstname, lastname, username, password, role, account_status) VALUES (@firstname, @lastname, @username, @password, @role, @account_status)";
+            string newUserId = "ITHD001"; // Default for first user
 
             using (MySqlConnection conn = new MySqlConnection(serverConnect()))
             {
                 try
                 {
                     conn.Open();
+
+                    // Get the highest current userID
+                    string getMaxIdQuery = "SELECT userID FROM accounts WHERE userID LIKE 'ITHD%' ORDER BY userID DESC LIMIT 1";
+                    MySqlCommand getMaxIdCmd = new MySqlCommand(getMaxIdQuery, conn);
+                    object result = getMaxIdCmd.ExecuteScalar();
+
+                    if (result != null)
+                    {
+                        string lastUserId = result.ToString();
+                        // Extract the numeric part and increment
+                        int lastNum = int.Parse(lastUserId.Substring(4));
+                        newUserId = "ITHD" + (lastNum + 1).ToString("D3");
+                    }
+
+                    string query = "INSERT INTO accounts (userID, firstname, lastname, username, password, role, account_status) " +
+                                   "VALUES (@userID, @firstname, @lastname, @username, @password, @role, @account_status)";
+
                     MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@userID", newUserId);
                     cmd.Parameters.AddWithValue("@firstname", firstName);
                     cmd.Parameters.AddWithValue("@lastname", lastName);
                     cmd.Parameters.AddWithValue("@username", userName);
-                    cmd.Parameters.AddWithValue("@password", password);  // You should hash the password in production
+                    cmd.Parameters.AddWithValue("@password", password);
                     cmd.Parameters.AddWithValue("@role", role);
                     cmd.Parameters.AddWithValue("@account_status", "active");
 
@@ -126,7 +141,7 @@ namespace IT_Helpdesk
                     if (rowsAffected > 0)
                     {
                         MessageBox.Show("Account created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadAccountList(); // Reload the list
+                        LoadAccountList();
                     }
                     else
                     {
@@ -143,7 +158,8 @@ namespace IT_Helpdesk
         {
             if (accountList.SelectedRows.Count > 0)
             {
-                int userId = Convert.ToInt32(accountList.SelectedRows[0].Cells["userID"].Value);
+                // Change from int to string, remove Convert.ToInt32
+                string userId = accountList.SelectedRows[0].Cells["userID"].Value.ToString();
 
                 string query = "UPDATE accounts SET account_status = 'deactivated' WHERE userID = @userID";
 
@@ -183,7 +199,8 @@ namespace IT_Helpdesk
         {
             if (accountList.SelectedRows.Count > 0)
             {
-                int userId = Convert.ToInt32(accountList.SelectedRows[0].Cells["userID"].Value);
+                // Change from int to string, remove Convert.ToInt32
+                string userId = accountList.SelectedRows[0].Cells["userID"].Value.ToString();
 
                 string query = "UPDATE accounts SET account_status = 'active' WHERE userID = @userID";
 

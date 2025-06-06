@@ -13,8 +13,8 @@ namespace IT_Helpdesk
 {
     public partial class TicketRecords : Form
     {
-        private int adminId;
-        public TicketRecords(int adminId)
+        private string adminId; // CHANGED from int to string
+        public TicketRecords(string adminId) // CHANGED from int to string
         {
             InitializeComponent();
             this.adminId = adminId;
@@ -72,7 +72,7 @@ WHERE 1 = 1";  // Dummy WHERE so that `AND` conditions can be appended
                 {
                     conn.Open();
                     MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@adminId", adminId);
+                    cmd.Parameters.AddWithValue("@adminId", adminId); // adminId is now string
 
                     if (!string.IsNullOrWhiteSpace(searchQuery))
                     {

@@ -7,10 +7,10 @@ namespace IT_Helpdesk
 {
     public partial class History : Form
     {
-        private int userId;
+        private string userId; // CHANGED from int to string
         private string connectionString = "Server=127.0.0.1; Database=company_helpdesk; User=root; Password=;";
 
-        public History(int userId)
+        public History(string userId) // CHANGED from int to string
         {
             InitializeComponent();
             this.userId = userId;
@@ -39,7 +39,7 @@ namespace IT_Helpdesk
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
-                adapter.SelectCommand.Parameters.AddWithValue("@userId", userId);
+                adapter.SelectCommand.Parameters.AddWithValue("@userId", userId); // userId is now string
                 DataTable historyTable = new DataTable();
                 adapter.Fill(historyTable);
 

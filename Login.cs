@@ -44,19 +44,19 @@ namespace IT_Helpdesk
                             return;
                         }
 
-                        int userId = Convert.ToInt32(reader["userID"]);
+                        string userId = reader["userID"].ToString(); // CHANGED from int to string
                         string role = reader["role"].ToString().ToLower();
 
                         this.Hide();
 
                         if (role == "admin")
                         {
-                            AdminDashboard adminForm = new AdminDashboard(username.Text, userId);
+                            AdminDashboard adminForm = new AdminDashboard(username.Text, userId); // userId is now string
                             adminForm.Show();
                         }
                         else if (role == "user")
                         {
-                            UserDashboard userForm = new UserDashboard(userId, username.Text);
+                            UserDashboard userForm = new UserDashboard(userId, username.Text); // userId is now string
                             userForm.Show();
                         }
                         else

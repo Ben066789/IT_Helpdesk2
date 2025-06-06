@@ -8,11 +8,11 @@ namespace IT_Helpdesk
 {
     public partial class UserDashboard : Form
     {
-        private int userId;
+        private string userId; // CHANGED from int to string
         private string connectionString = "Server=127.0.0.1; Database=company_helpdesk; User=root; Password=;";
         private string currentUsername;
 
-        public UserDashboard(int userId, string username)
+        public UserDashboard(string userId, string username) // CHANGED userId to string
         {
             InitializeComponent();
             currentUsername = username;
@@ -144,14 +144,14 @@ namespace IT_Helpdesk
         }
         private void createButton_Click(object sender, EventArgs e)
         {
-            CreateTicketForm createForm = new CreateTicketForm(userId);
+            CreateTicketForm createForm = new CreateTicketForm(userId); // userId is now string
             createForm.ShowDialog();
             LoadTickets();
         }
         //historyBtn_Click
         private void historyBtn_Click(object sender, EventArgs e)
         {
-            History historyForm = new History(userId);
+            History historyForm = new History(userId); // userId is now string
             historyForm.ShowDialog();
             LoadTickets();
         }
@@ -212,6 +212,7 @@ namespace IT_Helpdesk
                     int ticketId = Convert.ToInt32(row.Cells["ticket_id"].Value);
                     string status = row.Cells["status"].Value.ToString().Trim();
 
+                    // Pass userId as string
                     userTicketStatusCheck statusForm = new userTicketStatusCheck(ticketId, status, userId);
                     statusForm.ShowDialog();
 

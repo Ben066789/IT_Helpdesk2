@@ -10,16 +10,16 @@ namespace IT_Helpdesk
     public partial class AdminDashboard : Form
     {
         private string currentUsername;
-        private int userId;
+        private string userId; // CHANGED from int to string
 
-        public AdminDashboard(string username, int userId)
+        public AdminDashboard(string username, string userId) // CHANGED from int to string
         {
             InitializeComponent();
             this.AutoScaleMode = AutoScaleMode.Dpi;
             currentUsername = username;
             this.FormClosed += AdminDashboard_FormClosed;
             this.FormClosing += AdminDashboard_FormClosing;
-            this.userId = userId;
+            this.userId = userId; // assignment remains
             LoadAssignedTickets();
             adminDataGridViewStyling();
             LoadClosedTicketsHistory();
@@ -59,7 +59,7 @@ namespace IT_Helpdesk
                 {
                     conn.Open();
                     MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@adminId", userId); //query admin current admin
+                    cmd.Parameters.AddWithValue("@adminId", userId); // userId is now string
 
                     MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
@@ -305,7 +305,6 @@ namespace IT_Helpdesk
 
         private void adminDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Ignore header clicks
             if (e.RowIndex < 0)
                 return;
 
@@ -321,7 +320,7 @@ namespace IT_Helpdesk
             }
 
             // Open the AdminTicketManager form for the selected ticket
-            AdminTicketManager ticketManagerForm = new AdminTicketManager(selectedTicketId, userId);
+            AdminTicketManager ticketManagerForm = new AdminTicketManager(selectedTicketId, userId); // userId is now string
             ticketManagerForm.FormClosed += (s, args) => LoadAssignedTickets(); // Refresh the grid after reassignment
             ticketManagerForm.ShowDialog();
         }
@@ -356,7 +355,7 @@ namespace IT_Helpdesk
                 {
                     conn.Open();
                     MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@adminId", userId); // logged-in admin ID
+                    cmd.Parameters.AddWithValue("@adminId", userId); // userId is now string
 
                     MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
@@ -383,9 +382,10 @@ namespace IT_Helpdesk
             accManagerForm.ShowDialog();
         }
 
+        // ...existing code...
         private void ticketRecordsBtn_Click(object sender, EventArgs e)
         {
-            TicketRecords ticketRecordsForm = new TicketRecords(userId);
+            TicketRecords ticketRecordsForm = new TicketRecords(userId); // userId is now string
             ticketRecordsForm.ShowDialog();
         }
 
@@ -432,7 +432,7 @@ namespace IT_Helpdesk
                 {
                     conn.Open();
                     MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@adminId", userId);
+                    cmd.Parameters.AddWithValue("@adminId", userId); // userId is now string
                     cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
 
                     MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
@@ -466,7 +466,7 @@ namespace IT_Helpdesk
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@eeStatus", newStatus);
-                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.Parameters.AddWithValue("@userId", userId); // userId is now string
                     cmd.ExecuteNonQuery();
                 }
             }
