@@ -139,7 +139,7 @@ namespace IT_Helpdesk
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            string updateQuery = "UPDATE tickets SET status = 'Closed' WHERE ticket_id = @ticketId";
+            string updateQuery = "UPDATE tickets SET status = 'Closed', completed_at = NOW() WHERE ticket_id = @ticketId";
             using (MySqlConnection conn = new MySqlConnection(serverConnect()))
             {
                 conn.Open();

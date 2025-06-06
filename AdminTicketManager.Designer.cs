@@ -62,6 +62,7 @@
             label2 = new Label();
             label4 = new Label();
             pnlProgressRemarksPrev = new Panel();
+            btnClear = new Button();
             label1 = new Label();
             lbInProgRemarksPrev = new Label();
             timeDate6 = new Label();
@@ -83,7 +84,6 @@
             pngExtraRemarks = new Panel();
             txtExtraRemarks = new TextBox();
             label7 = new Label();
-            btnClear = new Button();
             pnlReassignBG.SuspendLayout();
             pnlTicketInfo.SuspendLayout();
             pnlProgressUpdater.SuspendLayout();
@@ -127,9 +127,9 @@
             pnlReassignBG.Controls.Add(btnReassign);
             pnlReassignBG.Controls.Add(lblReassign);
             pnlReassignBG.Controls.Add(comboBoxAdmins);
-            pnlReassignBG.Location = new Point(12, 13);
+            pnlReassignBG.Location = new Point(12, 11);
             pnlReassignBG.Name = "pnlReassignBG";
-            pnlReassignBG.Size = new Size(265, 220);
+            pnlReassignBG.Size = new Size(265, 224);
             pnlReassignBG.TabIndex = 3;
             // 
             // btnCancelReassign
@@ -410,6 +410,16 @@
             pnlProgressRemarksPrev.Size = new Size(232, 438);
             pnlProgressRemarksPrev.TabIndex = 6;
             // 
+            // btnClear
+            // 
+            btnClear.Location = new Point(14, 400);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(75, 23);
+            btnClear.TabIndex = 14;
+            btnClear.Text = "Clear";
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
+            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -657,16 +667,6 @@
             label7.TabIndex = 0;
             label7.Text = "Extra Remarks";
             label7.TextAlign = ContentAlignment.TopRight;
-            // 
-            // btnClear
-            // 
-            btnClear.Location = new Point(14, 400);
-            btnClear.Name = "btnClear";
-            btnClear.Size = new Size(75, 23);
-            btnClear.TabIndex = 14;
-            btnClear.Text = "Clear";
-            btnClear.UseVisualStyleBackColor = true;
-            btnClear.Click += btnClear_Click;
             // 
             // AdminTicketManager
             // 
