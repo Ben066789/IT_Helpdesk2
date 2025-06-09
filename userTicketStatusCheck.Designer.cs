@@ -249,7 +249,7 @@
             // lblAdminName
             // 
             lblAdminName.AutoSize = true;
-            lblAdminName.Location = new Point(145, 97);
+            lblAdminName.Location = new Point(124, 97);
             lblAdminName.Name = "lblAdminName";
             lblAdminName.Size = new Size(38, 15);
             lblAdminName.TabIndex = 7;

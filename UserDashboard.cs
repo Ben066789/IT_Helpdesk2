@@ -11,6 +11,8 @@ namespace IT_Helpdesk
         private string userId; // CHANGED from int to string
         private string connectionString = "Server=127.0.0.1; Database=company_helpdesk; User=root; Password=;";
         private string currentUsername;
+        private NotifyIcon trayIcon;
+        private System.Windows.Forms.Timer notifTimer;
 
         public UserDashboard(string userId, string username) // CHANGED userId to string
         {
@@ -25,7 +27,67 @@ namespace IT_Helpdesk
             dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
             dataGridView1.CellFormatting += dataGridView1_CellFormatting;
             dataGridView1.AllowUserToAddRows = false;
+
+            //experimental tray thing for notif
+            trayIcon = new NotifyIcon();
+            trayIcon.Icon = SystemIcons.Application;
+            trayIcon.Text = "IT Helpdesk";
+            trayIcon.Visible = false;
+            trayIcon.DoubleClick += TrayIcon_DoubleClick;
+            this.Resize += UserDashboard_Resize;
+
+            //experimental timer for notifications
+            notifTimer = new System.Windows.Forms.Timer();
+            notifTimer.Interval = 10000; // 10 seconds for testing
+            notifTimer.Tick += NotifTimer_Tick;
+            notifTimer.Start(); 
         }
+        private void NotifTimer_Tick(object sender, EventArgs e)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                string query = @"
+            SELECT COUNT(*) FROM tickets
+            WHERE user_id = @userId AND status = 'Resolved'
+        ";
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    try
+                    {
+                        conn.Open();
+                        int resolvedCount = Convert.ToInt32(cmd.ExecuteScalar());
+                        if (resolvedCount > 0)
+                        {
+                            trayIcon.BalloonTipTitle = "Ticket Confirmation Needed";
+                            trayIcon.BalloonTipText = "You have resolved tickets. Please confirm if the issue is fixed.";
+                            trayIcon.ShowBalloonTip(10000);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error checking resolved tickets: " + ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void UserDashboard_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();
+                trayIcon.Visible = true;
+                trayIcon.ShowBalloonTip(1000, "IT Helpdesk", "App is running in the background.", ToolTipIcon.Info);
+            }
+        }
+        private void TrayIcon_DoubleClick(object sender, EventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            trayIcon.Visible = false;
+        }
+
         private string serverConnect()
         {
             return "Server=127.0.0.1; Database=company_helpdesk; User ID=root; Password=;";
@@ -160,6 +222,8 @@ namespace IT_Helpdesk
             this.Hide(); 
             Login loginForm = new Login();
             loginForm.Show();
+            trayIcon.Visible = false;
+            notifTimer?.Stop();
         }
         private void UserDashboard_FormClosing(object sender, FormClosingEventArgs e)
         {

@@ -20,16 +20,17 @@ namespace IT_Helpdesk
         public string NewDescription => txtDescription.Text.Trim();
         public int SelectedAdminId => Convert.ToInt32(comboBoxAdmins.SelectedValue);
 
-        public AdminTicketManager(int ticketId, string userId) // CHANGED from int to string
+        public AdminTicketManager(int ticketId, string userId, bool viewOnly = false) // CHANGED from int to string
         {
             InitializeComponent();
             pnlResolvedRemarksPrev.Visible = false;
+            dateTimeUntilOnHold.Format = DateTimePickerFormat.Custom;
+            dateTimeUntilOnHold.CustomFormat = "yyyy-MM-dd HH:mm";
             btnShowHideResolved.Text = "Show";
             LoadAdmins();
             this.ticketId = ticketId;
             this.userId = userId; // assignment remains
             this.AutoScaleMode = AutoScaleMode.Dpi;
-            this.Text = "Reassign Form";
             pnlReassignBG.Visible = false;
 
             btnShowReassign.Click += (s, e) => pnlReassignBG.Visible = true;
@@ -37,8 +38,24 @@ namespace IT_Helpdesk
             btnAcceptTicket.Click += btnAcceptTicket_Click;
             cmbStatus.SelectedIndexChanged += cmbStatus_SelectedIndexChanged;
             btnShowHideResolved.Click += btnShowHideResolved_Click;
+            this.MouseDown += AdminTicketManager_MouseDown;
+            pnlOnHold.Visible = false;
             LoadTicketInfo();
+            /*if (viewOnly)
+            {
+                DisableAllControls();
+            }*/
         }
+        /*private void DisableAllControls()
+        {
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl is Button btn && (btn.Text == "Close" || btn == btnShowHideResolved))
+                    continue;
+                ctrl.Enabled = false;
+            }
+        }*/
+
 
         private void LoadAdmins()
         {
@@ -55,6 +72,19 @@ namespace IT_Helpdesk
                 comboBoxAdmins.ValueMember = "userID";
             }
         }
+        private void AdminTicketManager_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (pnlOnHold.Visible)
+            {
+                // Convert mouse position to panel's client coordinates
+                Point panelPoint = pnlOnHold.PointToClient(this.PointToScreen(e.Location));
+                if (!pnlOnHold.ClientRectangle.Contains(panelPoint))
+                {
+                    pnlOnHold.Visible = false;
+                }
+            }
+        }
+
 
         private void reassignBtn_Click(object sender, EventArgs e)
         {
@@ -171,6 +201,8 @@ namespace IT_Helpdesk
                 btnProgRemarkPost.Enabled = true;
                 txtResolveRemarks.Enabled = false;
                 btnResolvePost.Enabled = false;
+                pnlOnHold.Visible = false;
+                btnPostOnHold.Enabled = false; //On Hold post disable
             }
             else if (selectedLower == "resolved")
             {
@@ -178,6 +210,17 @@ namespace IT_Helpdesk
                 btnProgRemarkPost.Enabled = false;
                 txtResolveRemarks.Enabled = true;
                 btnResolvePost.Enabled = true;
+                pnlOnHold.Visible = false;
+                btnPostOnHold.Enabled = false; //On Hold post disable
+            }
+            else if (selectedLower == "on hold")
+            {
+                txtProgRemarks.Enabled = false;
+                btnProgRemarkPost.Enabled = false;
+                txtResolveRemarks.Enabled = false;
+                btnResolvePost.Enabled = false;
+                pnlOnHold.Visible = true;
+                btnPostOnHold.Enabled = true;
             }
             else
             {
@@ -185,8 +228,11 @@ namespace IT_Helpdesk
                 btnProgRemarkPost.Enabled = false;
                 txtResolveRemarks.Enabled = false;
                 btnResolvePost.Enabled = false;
+                pnlOnHold.Visible = false;
+                btnPostOnHold.Enabled = false; //On Hold post disable
             }
         }
+
 
         private void SetStatusUpdaterUI(string status)
         {
@@ -416,6 +462,35 @@ namespace IT_Helpdesk
             }
 
             MessageBox.Show("All progress remarks have been cleared.");
+        }
+
+        private void btnPostOnHold_Click(object sender, EventArgs e)
+        {
+            string onHoldReason = txtBoxOnHold.Text.Trim();
+            DateTime onHoldUntil = dateTimeUntilOnHold.Value; // Assuming you have a DateTimePicker named dtpOnHoldUntil
+
+            if (string.IsNullOrEmpty(onHoldReason))
+            {
+                MessageBox.Show("Please enter a reason for putting the ticket on hold.");
+                return;
+            }
+
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string updateQuery = "UPDATE tickets SET status = 'On Hold', on_hold_reason = @reason, on_hold_until = @until WHERE ticket_id = @ticketId";
+                using (var cmd = new MySqlCommand(updateQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@reason", onHoldReason);
+                    cmd.Parameters.AddWithValue("@until", onHoldUntil);
+                    cmd.Parameters.AddWithValue("@ticketId", ticketId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            MessageBox.Show("Ticket set to On Hold.");
+            pnlOnHold.Visible = false;
+            LoadTicketInfo();
         }
 
 

@@ -28,6 +28,7 @@ namespace IT_Helpdesk
             adminDataGridView.CellClick += adminDataGridView_CellClick;
             adminDataGridView.CellFormatting += DataGridView_CellFormatting;
             historyDataGridView.CellFormatting += DataGridView_CellFormatting;
+            historyDataGridView.CellClick += historyDataGridView_CellClick;
         }// Constructor receives the logged-in username
 
         private string serverConnect()
@@ -40,18 +41,28 @@ namespace IT_Helpdesk
             using (MySqlConnection conn = new MySqlConnection(serverConnect()))
             {
                 string query = @"
-                SELECT 
-                t.ticket_id,
-                t.title,
-                CONCAT(a.firstname, ' ', a.lastname) AS owner_name,
-                t.description,
-                t.priority,
-                t.status,
-                t.created_at,
-                t.note
-                FROM tickets t
-                JOIN accounts a ON t.user_id = a.userID
-                WHERE t.assigned_to = @adminId AND t.status != 'closed'";
+SELECT 
+    t.ticket_id,
+    t.title,
+    CONCAT(a.firstname, ' ', a.lastname) AS owner_name,
+    t.description,
+    t.priority,
+    t.status,
+    t.created_at,
+    t.note
+FROM tickets t
+JOIN accounts a ON t.user_id = a.userID
+WHERE t.assigned_to = @adminId AND t.status != 'closed'
+ORDER BY 
+    CASE 
+        WHEN t.priority = 'low' THEN 4
+        WHEN t.priority = 'normal' THEN 3
+        WHEN t.priority = 'high' THEN 2
+        WHEN t.priority = 'urgent' THEN 1
+        ELSE 5
+    END,
+    t.created_at DESC";
+
                 /* t
                  * CONCAT for joining admin's firstname & lastname*/
 
@@ -92,6 +103,7 @@ namespace IT_Helpdesk
                 else if (status == "closed") e.CellStyle.ForeColor = Color.Gray;
                 else e.CellStyle.ForeColor = Color.Black;
             }
+
             if (dgv.Columns[e.ColumnIndex].Name == "priority" && e.Value != null)
             {
                 e.CellStyle.Font = new Font(dgv.DefaultCellStyle.Font, FontStyle.Bold);
@@ -102,6 +114,30 @@ namespace IT_Helpdesk
                 else if (priority == "low") e.CellStyle.ForeColor = Color.Blue;
                 else e.CellStyle.ForeColor = Color.Black;
             }
+            if (dgv.Columns[e.ColumnIndex].Name == "priority" && e.Value != null)
+            {
+                e.CellStyle.Font = new Font(dgv.DefaultCellStyle.Font, FontStyle.Bold);
+                string priority = e.Value.ToString().ToLower();
+                switch (priority)
+                {
+                    case "urgent":
+                        e.CellStyle.ForeColor = Color.DarkViolet;
+                        break;
+                    case "high":
+                        e.CellStyle.ForeColor = Color.Red;
+                        break;
+                    case "normal":
+                        e.CellStyle.ForeColor = Color.DarkOrange;
+                        break;
+                    case "low":
+                        e.CellStyle.ForeColor = Color.Blue;
+                        break;
+                    default:
+                        e.CellStyle.ForeColor = Color.Black;
+                        break;
+                }
+            }
+
         }
 
         private void adminDataGridViewStyling()
@@ -140,6 +176,7 @@ namespace IT_Helpdesk
             if (adminDataGridView.Columns.Contains("note")) adminDataGridView.Columns["note"].HeaderText = "Note";
             if (adminDataGridView.Columns.Contains("handled_by")) adminDataGridView.Columns["handled_by"].HeaderText = "Handled By";
         }
+
         private void historyDataGridViewStyling()
         {
             historyDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -177,6 +214,18 @@ namespace IT_Helpdesk
             if (historyDataGridView.Columns.Contains("department")) historyDataGridView.Columns["department"].HeaderText = "Department";
             if (historyDataGridView.Columns.Contains("handled_by")) historyDataGridView.Columns["handled_by"].HeaderText = "Handled By";
         }
+        private void historyDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            DataGridViewRow row = historyDataGridView.Rows[e.RowIndex];
+            int selectedTicketId = Convert.ToInt32(row.Cells["ticket_id"].Value);
+            string status = row.Cells["status"].Value.ToString();
+            userTicketStatusCheck statusCheckForm = new userTicketStatusCheck(selectedTicketId, status, userId);
+            statusCheckForm.ShowDialog();
+        }
+
 
 
         private void AdminDashboard_Load(object sender, EventArgs e)

@@ -36,7 +36,7 @@
             // txtResolveRemarks
             // 
             txtResolveRemarks.BorderStyle = BorderStyle.None;
-            txtResolveRemarks.Font = new Font("Segoe UI", 10F);
+            txtResolveRemarks.Font = new Font("Segoe UI", 12F);
             txtResolveRemarks.Location = new Point(12, 42);
             txtResolveRemarks.Multiline = true;
             txtResolveRemarks.Name = "txtResolveRemarks";

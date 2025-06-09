@@ -161,7 +161,7 @@ namespace IT_Helpdesk
                 // Change from int to string, remove Convert.ToInt32
                 string userId = accountList.SelectedRows[0].Cells["userID"].Value.ToString();
 
-                string query = "UPDATE accounts SET account_status = 'deactivated' WHERE userID = @userID";
+                string query = "UPDATE accounts SET account_status = 'deactivated', eeStatus = 'unavailable' WHERE userID = @userID";
 
                 using (MySqlConnection conn = new MySqlConnection(serverConnect()))
                 {

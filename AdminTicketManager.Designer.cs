@@ -84,12 +84,19 @@
             pngExtraRemarks = new Panel();
             txtExtraRemarks = new TextBox();
             label7 = new Label();
+            pnlOnHold = new Panel();
+            dateTimeUntilOnHold = new DateTimePicker();
+            btnPostOnHold = new Button();
+            label9 = new Label();
+            label8 = new Label();
+            txtBoxOnHold = new TextBox();
             pnlReassignBG.SuspendLayout();
             pnlTicketInfo.SuspendLayout();
             pnlProgressUpdater.SuspendLayout();
             pnlProgressRemarksPrev.SuspendLayout();
             pnlResolvedRemarksPrev.SuspendLayout();
             pngExtraRemarks.SuspendLayout();
+            pnlOnHold.SuspendLayout();
             SuspendLayout();
             // 
             // comboBoxAdmins
@@ -319,7 +326,7 @@
             // cmbStatus
             // 
             cmbStatus.FormattingEnabled = true;
-            cmbStatus.Items.AddRange(new object[] { "In Progress", "Resolved" });
+            cmbStatus.Items.AddRange(new object[] { "On Hold", "In Progress", "Resolved" });
             cmbStatus.Location = new Point(14, 79);
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(112, 23);
@@ -451,7 +458,7 @@
             timeDate6.AutoSize = true;
             timeDate6.BackColor = Color.Transparent;
             timeDate6.ForeColor = Color.DimGray;
-            timeDate6.Location = new Point(178, 390);
+            timeDate6.Location = new Point(110, 390);
             timeDate6.Name = "timeDate6";
             timeDate6.Size = new Size(38, 15);
             timeDate6.TabIndex = 8;
@@ -462,7 +469,7 @@
             timeDate5.AutoSize = true;
             timeDate5.BackColor = Color.Transparent;
             timeDate5.ForeColor = Color.DimGray;
-            timeDate5.Location = new Point(178, 328);
+            timeDate5.Location = new Point(110, 328);
             timeDate5.Name = "timeDate5";
             timeDate5.Size = new Size(38, 15);
             timeDate5.TabIndex = 9;
@@ -473,7 +480,7 @@
             timeDate4.AutoSize = true;
             timeDate4.BackColor = Color.Transparent;
             timeDate4.ForeColor = Color.DimGray;
-            timeDate4.Location = new Point(178, 268);
+            timeDate4.Location = new Point(110, 268);
             timeDate4.Name = "timeDate4";
             timeDate4.Size = new Size(38, 15);
             timeDate4.TabIndex = 10;
@@ -484,7 +491,7 @@
             timeDate3.AutoSize = true;
             timeDate3.BackColor = Color.Transparent;
             timeDate3.ForeColor = Color.DimGray;
-            timeDate3.Location = new Point(178, 208);
+            timeDate3.Location = new Point(110, 208);
             timeDate3.Name = "timeDate3";
             timeDate3.Size = new Size(38, 15);
             timeDate3.TabIndex = 11;
@@ -495,7 +502,7 @@
             timeDate2.AutoSize = true;
             timeDate2.BackColor = Color.Transparent;
             timeDate2.ForeColor = Color.DimGray;
-            timeDate2.Location = new Point(178, 148);
+            timeDate2.Location = new Point(110, 148);
             timeDate2.Name = "timeDate2";
             timeDate2.Size = new Size(38, 15);
             timeDate2.TabIndex = 12;
@@ -506,7 +513,7 @@
             timeDate1.AutoSize = true;
             timeDate1.BackColor = Color.Transparent;
             timeDate1.ForeColor = Color.DimGray;
-            timeDate1.Location = new Point(178, 87);
+            timeDate1.Location = new Point(110, 87);
             timeDate1.Name = "timeDate1";
             timeDate1.Size = new Size(38, 15);
             timeDate1.TabIndex = 13;
@@ -595,7 +602,7 @@
             pnlResolvedRemarksPrev.Controls.Add(label6);
             pnlResolvedRemarksPrev.Controls.Add(textBox1);
             pnlResolvedRemarksPrev.Controls.Add(label5);
-            pnlResolvedRemarksPrev.Location = new Point(561, 249);
+            pnlResolvedRemarksPrev.Location = new Point(561, 250);
             pnlResolvedRemarksPrev.Name = "pnlResolvedRemarksPrev";
             pnlResolvedRemarksPrev.Size = new Size(232, 200);
             pnlResolvedRemarksPrev.TabIndex = 7;
@@ -668,12 +675,76 @@
             label7.Text = "Extra Remarks";
             label7.TextAlign = ContentAlignment.TopRight;
             // 
+            // pnlOnHold
+            // 
+            pnlOnHold.BackColor = SystemColors.GradientActiveCaption;
+            pnlOnHold.Controls.Add(dateTimeUntilOnHold);
+            pnlOnHold.Controls.Add(btnPostOnHold);
+            pnlOnHold.Controls.Add(label9);
+            pnlOnHold.Controls.Add(label8);
+            pnlOnHold.Controls.Add(txtBoxOnHold);
+            pnlOnHold.Location = new Point(561, 12);
+            pnlOnHold.Name = "pnlOnHold";
+            pnlOnHold.Size = new Size(232, 246);
+            pnlOnHold.TabIndex = 15;
+            // 
+            // dateTimeUntilOnHold
+            // 
+            dateTimeUntilOnHold.Location = new Point(10, 166);
+            dateTimeUntilOnHold.Name = "dateTimeUntilOnHold";
+            dateTimeUntilOnHold.Size = new Size(213, 23);
+            dateTimeUntilOnHold.TabIndex = 3;
+            // 
+            // btnPostOnHold
+            // 
+            btnPostOnHold.Location = new Point(148, 209);
+            btnPostOnHold.Name = "btnPostOnHold";
+            btnPostOnHold.Size = new Size(75, 23);
+            btnPostOnHold.TabIndex = 2;
+            btnPostOnHold.Text = "Post";
+            btnPostOnHold.UseVisualStyleBackColor = true;
+            btnPostOnHold.Click += btnPostOnHold_Click;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Century Gothic", 11F, FontStyle.Bold);
+            label9.Location = new Point(7, 146);
+            label9.Name = "label9";
+            label9.RightToLeft = RightToLeft.Yes;
+            label9.Size = new Size(0, 18);
+            label9.TabIndex = 0;
+            label9.TextAlign = ContentAlignment.TopRight;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Century Gothic", 11F, FontStyle.Bold);
+            label8.Location = new Point(7, 10);
+            label8.Name = "label8";
+            label8.RightToLeft = RightToLeft.Yes;
+            label8.Size = new Size(135, 18);
+            label8.TabIndex = 0;
+            label8.Text = "On Hold Remarks";
+            label8.TextAlign = ContentAlignment.TopRight;
+            // 
+            // txtBoxOnHold
+            // 
+            txtBoxOnHold.AcceptsTab = true;
+            txtBoxOnHold.Location = new Point(9, 37);
+            txtBoxOnHold.Multiline = true;
+            txtBoxOnHold.Name = "txtBoxOnHold";
+            txtBoxOnHold.Size = new Size(214, 123);
+            txtBoxOnHold.TabIndex = 1;
+            txtBoxOnHold.TabStop = false;
+            // 
             // AdminTicketManager
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.IT_HelpdeskBG1;
             ClientSize = new Size(806, 463);
+            Controls.Add(pnlOnHold);
             Controls.Add(pngExtraRemarks);
             Controls.Add(pnlResolvedRemarksPrev);
             Controls.Add(pnlProgressRemarksPrev);
@@ -694,6 +765,8 @@
             pnlResolvedRemarksPrev.PerformLayout();
             pngExtraRemarks.ResumeLayout(false);
             pngExtraRemarks.PerformLayout();
+            pnlOnHold.ResumeLayout(false);
+            pnlOnHold.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -749,5 +822,11 @@
         private Label label7;
         private TextBox txtExtraRemarks;
         private Button btnClear;
+        private Panel pnlOnHold;
+        private Label label8;
+        private Button btnPostOnHold;
+        private TextBox txtBoxOnHold;
+        private DateTimePicker dateTimeUntilOnHold;
+        private Label label9;
     }
 }

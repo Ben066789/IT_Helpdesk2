@@ -98,3 +98,4 @@ C:\Users\User\source\repos\IT_Helpdesk\bin\Debug\net8.0-windows\progressTracker_
 C:\Users\User\source\repos\IT_Helpdesk\bin\Debug\net8.0-windows\progressTracker_ITHelpdesk\On Hold.png
 C:\Users\User\source\repos\IT_Helpdesk\bin\Debug\net8.0-windows\progressTracker_ITHelpdesk\default.png
 C:\Users\User\source\repos\IT_Helpdesk\bin\Debug\net8.0-windows\progressTracker_ITHelpdesk\Opened.png
+C:\Users\User\source\repos\IT_Helpdesk\obj\Debug\net8.0-windows\IT_Helpdesk.onHoverOnHoldRemarks.resources

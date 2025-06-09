@@ -19,6 +19,7 @@ namespace IT_Helpdesk
         private string userId; // CHANGED from int to string
         private onHoverProgressRemarks hoverRemarksForm;
         private onHoverResolveRemarks hoverResolveForm;
+        private onHoverOnHoldRemarks hoverOnHoldForm;
 
         public userTicketStatusCheck(int ticketId, string status, string userId) // CHANGED userId to string
         {
@@ -33,6 +34,9 @@ namespace IT_Helpdesk
 
             lblResolved.MouseEnter += lblResolved_MouseEnter;
             lblResolved.MouseLeave += lblResolved_MouseLeave;
+
+            lblOnHold.MouseEnter += lblOnHold_MouseEnter;
+            lblOnHold.MouseLeave += lblOnHold_MouseLeave;
         }
         private string serverConnect()
         {
@@ -89,7 +93,7 @@ namespace IT_Helpdesk
                             txtLiveRemarksPrev.Text = reader["user_extra_remarks"] == DBNull.Value ? "" : reader["user_extra_remarks"].ToString();
 
                             // Enable btnPost only for "On Hold" or "In Progress"
-                            btnPost.Enabled = (statusLower == "on hold" || statusLower == "in progress");
+                            btnPost.Enabled = (statusLower == "on hold" || statusLower == "in progress" || statusLower == "resolved");
                         }
                         else
                         {
@@ -159,7 +163,8 @@ namespace IT_Helpdesk
             MessageBox.Show("Ticket marked as Completed.");
             btnConfirm.Enabled = false;
         }
-        //on Hover Trigger for remarks
+
+        //progress remarks hover
         private void onHoverTrigger_MouseEnter(object sender, EventArgs e)
         {
             if (hoverRemarksForm == null || hoverRemarksForm.IsDisposed)
@@ -183,6 +188,28 @@ namespace IT_Helpdesk
             }
         }
 
+        // on hold hover
+        private void lblOnHold_MouseEnter(object sender, EventArgs e)
+        {
+            if (hoverOnHoldForm == null || hoverOnHoldForm.IsDisposed)
+            {
+                hoverOnHoldForm = new onHoverOnHoldRemarks(ticketId);
+                hoverOnHoldForm.FormBorderStyle = FormBorderStyle.None; // No border
+                hoverOnHoldForm.StartPosition = FormStartPosition.Manual;
+                var labelLocation = this.PointToScreen(lblOnHold.Location);
+                hoverOnHoldForm.Location = new Point(labelLocation.X + lblOnHold.Width, labelLocation.Y);
+                hoverOnHoldForm.Show(this);
+            }
+        }
+        private void lblOnHold_MouseLeave(object sender, EventArgs e)
+        {
+            if (hoverOnHoldForm != null && !hoverOnHoldForm.IsDisposed)
+            {
+                hoverOnHoldForm.Close();
+            }
+        }
+
+        // resolve remarks hover
         private void lblResolved_MouseEnter(object sender, EventArgs e)
         {
             if (hoverResolveForm == null || hoverResolveForm.IsDisposed)
